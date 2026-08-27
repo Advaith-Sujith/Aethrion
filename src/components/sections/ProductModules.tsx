@@ -52,7 +52,7 @@ const modules = [
   {
     id: "omnichannel",
     label: "Omnichannel Orchestration",
-    shortLabel: "Omnichannel",
+    shortLabel: "Omni-CX",
     icon: "🌐",
     color: "#ef4444",
     angle: 90,
@@ -95,9 +95,11 @@ const modules = [
   },
 ];
 
-const CX = 160;
-const CY = 160;
-const RADIUS = 110;
+const CX = 170;
+const CY = 170;
+const RADIUS = 116;
+const R_CENTER = 40;
+const R_NODE = 26;
 
 export default function ProductModules() {
   const [activeModule, setActiveModule] = useState<string>("call-center");
@@ -148,46 +150,64 @@ export default function ProductModules() {
           <RevealOnScroll direction="left">
             <div className="hidden lg:flex justify-center min-w-0">
               <svg
-                viewBox="0 0 320 320"
+                viewBox="0 0 340 340"
                 className="w-full max-w-sm cursor-pointer select-none"
                 role="img"
                 aria-label="Interactive diagram of Aethrion CX modules"
               >
-                {/* Connection lines */}
+                {/* Background Orbit Ring */}
+                <circle
+                  cx={CX}
+                  cy={CY}
+                  r={RADIUS}
+                  fill="none"
+                  stroke="rgba(255,255,255,0.06)"
+                  strokeWidth="1"
+                  strokeDasharray="4 4"
+                />
+
+                {/* Connection lines: Terminate cleanly outside both center and node circles */}
                 {modules.map((m) => {
                   const rad = (m.angle * Math.PI) / 180;
-                  const x = CX + RADIUS * Math.cos(rad);
-                  const y = CY + RADIUS * Math.sin(rad);
                   const isSel = activeModule === m.id;
+
+                  const startDist = R_CENTER + 4;
+                  const endDist = RADIUS - R_NODE - 4;
+
+                  const x1 = CX + startDist * Math.cos(rad);
+                  const y1 = CY + startDist * Math.sin(rad);
+                  const x2 = CX + endDist * Math.cos(rad);
+                  const y2 = CY + endDist * Math.sin(rad);
+
                   return (
                     <line
                       key={m.id + "-line"}
-                      x1={CX}
-                      y1={CY}
-                      x2={x}
-                      y2={y}
-                      stroke={isSel ? m.color : "rgba(255,255,255,0.1)"}
+                      x1={x1}
+                      y1={y1}
+                      x2={x2}
+                      y2={y2}
+                      stroke={isSel ? m.color : "rgba(255,255,255,0.15)"}
                       strokeWidth={isSel ? 2.5 : 1}
-                      strokeDasharray={isSel ? "none" : "4 3"}
+                      strokeDasharray={isSel ? "none" : "3 3"}
                       className="transition-all duration-300"
                     />
                   );
                 })}
 
                 {/* Center node */}
-                <circle cx={CX} cy={CY} r="40" fill="#0d1630" stroke="#0ea5e9" strokeWidth="2.5" />
-                <circle cx={CX} cy={CY} r="34" fill="#0ea5e9" fillOpacity="0.1" />
-                <text x={CX} y={CY - 6} textAnchor="middle" fill="#0ea5e9" fontSize="10" fontWeight="800">
+                <circle cx={CX} cy={CY} r={R_CENTER} fill="#0b1329" stroke="#0ea5e9" strokeWidth="2.5" />
+                <circle cx={CX} cy={CY} r={R_CENTER - 5} fill="#0ea5e9" fillOpacity="0.1" />
+                <text x={CX} y={CY - 7} textAnchor="middle" fill="#0ea5e9" fontSize="10.5" fontWeight="800">
                   Aethrion
                 </text>
-                <text x={CX} y={CY + 8} textAnchor="middle" fill="#0ea5e9" fontSize="10" fontWeight="800">
+                <text x={CX} y={CY + 6} textAnchor="middle" fill="#0ea5e9" fontSize="10.5" fontWeight="800">
                   CX
                 </text>
-                <text x={CX} y={CY + 20} textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="7" fontWeight="600">
+                <text x={CX} y={CY + 18} textAnchor="middle" fill="rgba(255,255,255,0.45)" fontSize="6.5" fontWeight="600">
                   Platform Core
                 </text>
 
-                {/* Module nodes */}
+                {/* Module nodes with contained labels & solid backdrops */}
                 {modules.map((m) => {
                   const rad = (m.angle * Math.PI) / 180;
                   const x = CX + RADIUS * Math.cos(rad);
@@ -206,22 +226,23 @@ export default function ProductModules() {
                       <circle
                         cx={x}
                         cy={y}
-                        r="24"
-                        fill={isSel ? m.color : "#112244"}
+                        r={R_NODE}
+                        fill={isSel ? m.color : "#0d1836"}
                         stroke={m.color}
-                        strokeWidth={isSel ? 3 : 1.5}
+                        strokeWidth={isSel ? 2.5 : 1.5}
                         className="transition-all duration-200"
                       />
-                      <text x={x} y={y - 2} textAnchor="middle" fontSize="12">
+                      <text x={x} y={y - 3} textAnchor="middle" fontSize="12">
                         {m.icon}
                       </text>
                       <text
                         x={x}
-                        y={y + 12}
+                        y={y + 10}
                         textAnchor="middle"
-                        fill={isSel ? "white" : "rgba(255,255,255,0.6)"}
-                        fontSize="6.5"
+                        fill={isSel ? "#ffffff" : "rgba(255,255,255,0.75)"}
+                        fontSize="5.8"
                         fontWeight="700"
+                        letterSpacing="0.1"
                         className="transition-all duration-200"
                       >
                         {m.shortLabel}

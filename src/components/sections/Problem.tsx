@@ -39,64 +39,156 @@ const problems = [
 
 function ChannelDiagram() {
   const channelNodes = [
-    { label: "Voice", angle: 270, color: "#0ea5e9" },
-    { label: "Chat", angle: 330, color: "#22c55e" },
-    { label: "WhatsApp", angle: 30, color: "#25d366" },
-    { label: "Email", angle: 90, color: "#8b5cf6" },
-    { label: "SMS", angle: 150, color: "#06b6d4" },
-    { label: "Social", angle: 210, color: "#f59e0b" },
+    { label: "Voice", icon: "📞", angle: 270, color: "#0ea5e9" },
+    { label: "Chat", icon: "💬", angle: 330, color: "#22c55e" },
+    { label: "WhatsApp", icon: "📱", angle: 30, color: "#25d366" },
+    { label: "Email", icon: "✉️", angle: 90, color: "#8b5cf6" },
+    { label: "SMS", icon: "📨", angle: 150, color: "#06b6d4" },
+    { label: "Social", icon: "🌐", angle: 210, color: "#f59e0b" },
   ];
 
-  const r = 90;
-  const cx = 130;
-  const cy = 130;
+  const cx = 140;
+  const cy = 140;
+  const orbitRadius = 100;
+  const centerRadius = 34;
+  const nodeRadius = 24;
 
   return (
-    <div className="flex items-center justify-center py-4 sm:py-8">
+    <div className="flex items-center justify-center py-4 sm:py-6">
       <svg
-        viewBox="0 0 260 260"
-        className="w-40 h-40 sm:w-48 sm:h-48 lg:w-60 lg:h-60 select-none"
+        viewBox="0 0 280 280"
+        className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 select-none"
         role="img"
         aria-label="Multiple channels converging into one unified platform"
       >
-        {/* Lines from channels to center */}
+        {/* Subtle background orbit guide */}
+        <circle
+          cx={cx}
+          cy={cy}
+          r={orbitRadius}
+          fill="none"
+          stroke="rgba(255,255,255,0.06)"
+          strokeWidth="1"
+          strokeDasharray="3 3"
+        />
+
+        {/* Precision Lines: Strictly from outside center circle to outside channel node */}
         {channelNodes.map((node) => {
           const rad = (node.angle * Math.PI) / 180;
-          const x = cx + r * Math.cos(rad);
-          const y = cy + r * Math.sin(rad);
+          const startDist = centerRadius + 4; // 4px gap outside center circle
+          const endDist = orbitRadius - nodeRadius - 4; // 4px gap outside channel circle
+
+          const x1 = cx + startDist * Math.cos(rad);
+          const y1 = cy + startDist * Math.sin(rad);
+          const x2 = cx + endDist * Math.cos(rad);
+          const y2 = cy + endDist * Math.sin(rad);
+
           return (
             <line
-              key={node.label}
-              x1={x}
-              y1={y}
-              x2={cx}
-              y2={cy}
+              key={node.label + "-line"}
+              x1={x1}
+              y1={y1}
+              x2={x2}
+              y2={y2}
               stroke={node.color}
               strokeWidth="1.5"
-              strokeDasharray="4 3"
-              opacity="0.6"
+              strokeDasharray="3 3"
+              opacity="0.8"
             />
           );
         })}
 
-        {/* Center platform node */}
-        <circle cx={cx} cy={cy} r="28" fill="#0d1630" stroke="#0ea5e9" strokeWidth="2" />
-        <text x={cx} y={cy - 5} textAnchor="middle" fill="#0ea5e9" fontSize="8" fontWeight="700">
+        {/* Center platform node with solid backdrop */}
+        <circle
+          cx={cx}
+          cy={cy}
+          r={centerRadius}
+          fill="#0b1329"
+          stroke="#0ea5e9"
+          strokeWidth="2.5"
+        />
+        <circle
+          cx={cx}
+          cy={cy}
+          r={centerRadius - 4}
+          fill="#0ea5e9"
+          fillOpacity="0.12"
+        />
+        <text
+          x={cx}
+          y={cy - 6}
+          textAnchor="middle"
+          fill="#0ea5e9"
+          fontSize="9.5"
+          fontWeight="800"
+        >
           Aethrion
         </text>
-        <text x={cx} y={cy + 7} textAnchor="middle" fill="#0ea5e9" fontSize="8" fontWeight="700">
+        <text
+          x={cx}
+          y={cy + 6}
+          textAnchor="middle"
+          fill="#0ea5e9"
+          fontSize="9.5"
+          fontWeight="800"
+        >
           CX
         </text>
+        <text
+          x={cx}
+          y={cy + 17}
+          textAnchor="middle"
+          fill="rgba(255,255,255,0.5)"
+          fontSize="6"
+          fontWeight="600"
+        >
+          Platform Core
+        </text>
 
-        {/* Channel nodes */}
+        {/* Channel nodes with solid background & contained typography */}
         {channelNodes.map((node) => {
           const rad = (node.angle * Math.PI) / 180;
-          const x = cx + r * Math.cos(rad);
-          const y = cy + r * Math.sin(rad);
+          const x = cx + orbitRadius * Math.cos(rad);
+          const y = cy + orbitRadius * Math.sin(rad);
+
           return (
             <g key={node.label}>
-              <circle cx={x} cy={y} r="18" fill={`${node.color}20`} stroke={node.color} strokeWidth="1.5" />
-              <text x={x} y={y + 4} textAnchor="middle" fill={node.color} fontSize="7" fontWeight="600">
+              {/* Solid dark base circle so background lines cannot bleed through */}
+              <circle
+                cx={x}
+                cy={y}
+                r={nodeRadius}
+                fill="#0b1329"
+                stroke={node.color}
+                strokeWidth="1.75"
+              />
+              {/* Color tint overlay */}
+              <circle
+                cx={x}
+                cy={y}
+                r={nodeRadius - 1}
+                fill={node.color}
+                fillOpacity="0.15"
+              />
+              {/* Icon */}
+              <text
+                x={x}
+                y={y - 3}
+                textAnchor="middle"
+                fontSize="11"
+              >
+                {node.icon}
+              </text>
+              {/* Label — calibrated font & position to fit 100% within the circle */}
+              <text
+                x={x}
+                y={y + 9}
+                textAnchor="middle"
+                fill={node.color}
+                fontSize="6"
+                fontWeight="700"
+                letterSpacing="0.1"
+              >
                 {node.label}
               </text>
             </g>
