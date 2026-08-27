@@ -22,18 +22,18 @@ const enterprise = [
 function ArchDiagram() {
   const cx = 220;
   const cy = 220;
-  const r1 = 130; // channel ring
-  const r2 = 200; // enterprise ring
+  const r1 = 130;
+  const r2 = 200;
 
   return (
     <svg
       viewBox="0 0 440 440"
-      className="w-full max-w-lg mx-auto"
+      className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto select-none"
       role="img"
       aria-label="Aethrion CX architecture diagram showing channel and enterprise integrations"
     >
       {/* Outer ring dashed circle */}
-      <circle cx={cx} cy={cy} r={r2} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="1" strokeDasharray="4 4" />
+      <circle cx={cx} cy={cy} r={r2} fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="1" strokeDasharray="4 4" />
       {/* Inner ring dashed circle */}
       <circle cx={cx} cy={cy} r={r1} fill="none" stroke="rgba(14,165,233,0.15)" strokeWidth="1" strokeDasharray="3 3" />
 
@@ -81,14 +81,14 @@ function ArchDiagram() {
 
       {/* Center platform */}
       <circle cx={cx} cy={cy} r="55" fill="#0d1630" stroke="#0ea5e9" strokeWidth="2" />
-      <circle cx={cx} cy={cy} r="48" fill="#0ea5e9" fillOpacity="0.06" />
-      <text x={cx} y={cy - 10} textAnchor="middle" fill="#0ea5e9" fontSize="11" fontWeight="700">
+      <circle cx={cx} cy={cy} r="48" fill="#0ea5e9" fillOpacity="0.08" />
+      <text x={cx} y={cy - 10} textAnchor="middle" fill="#0ea5e9" fontSize="11" fontWeight="800">
         Aethrion CX
       </text>
-      <text x={cx} y={cy + 5} textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="8">
+      <text x={cx} y={cy + 5} textAnchor="middle" fill="rgba(255,255,255,0.6)" fontSize="8">
         Platform Core
       </text>
-      <text x={cx} y={cy + 18} textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="7">
+      <text x={cx} y={cy + 18} textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="7">
         AI · Omnichannel · Analytics
       </text>
 
@@ -101,7 +101,7 @@ function ArchDiagram() {
           <g key={ch.label}>
             <circle cx={x} cy={y} r="22" fill={`${ch.color}18`} stroke={ch.color} strokeWidth="1.5" />
             <text x={x} y={y - 3} textAnchor="middle" fontSize="11">{ch.icon}</text>
-            <text x={x} y={y + 11} textAnchor="middle" fill={ch.color} fontSize="6.5" fontWeight="600">
+            <text x={x} y={y + 11} textAnchor="middle" fill={ch.color} fontSize="6.5" fontWeight="700">
               {ch.label}
             </text>
           </g>
@@ -125,10 +125,10 @@ function ArchDiagram() {
       })}
 
       {/* Ring labels */}
-      <text x={cx - r1 + 10} y={cy - r1 - 12} textAnchor="middle" fill="rgba(14,165,233,0.5)" fontSize="7" fontWeight="600">
+      <text x={cx - r1 + 10} y={cy - r1 - 12} textAnchor="middle" fill="rgba(14,165,233,0.6)" fontSize="7" fontWeight="700">
         CHANNEL LAYER
       </text>
-      <text x={cx - r2 + 30} y={cy - r2 - 12} textAnchor="middle" fill="rgba(255,255,255,0.2)" fontSize="7" fontWeight="600">
+      <text x={cx - r2 + 30} y={cy - r2 - 12} textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="7" fontWeight="700">
         ENTERPRISE INTEGRATIONS
       </text>
     </svg>
@@ -139,30 +139,30 @@ export default function Architecture() {
   return (
     <section id="architecture" className="section-padding bg-slate-50" aria-label="Platform architecture and integrations">
       <div className="container-wide">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <RevealOnScroll direction="left">
             <div>
               <SectionLabel>Architecture</SectionLabel>
-              <h2 className="heading-section text-navy-900 mb-4">
+              <h2 className="heading-section text-navy-900 mb-3 sm:mb-4">
                 Connect Customer Experience to Your Enterprise Stack.
               </h2>
-              <p className="body-large mb-8">
+              <p className="body-large mb-6 sm:mb-8">
                 Aethrion CX sits at the center of your customer experience ecosystem — connecting
                 inbound channels, customer-facing AI, and enterprise backend systems into one
                 coordinated platform.
               </p>
 
-              <div className="space-y-6">
+              <div className="space-y-5 sm:space-y-6">
                 <div>
-                  <h4 className="text-sm font-bold text-navy-900 mb-3 flex items-center gap-2">
-                    <span className="w-6 h-6 rounded-lg bg-accent/10 flex items-center justify-center text-accent text-xs font-bold">1</span>
-                    Channel Layer
+                  <h4 className="text-xs sm:text-sm font-bold text-navy-900 mb-2 sm:mb-3 flex items-center gap-2">
+                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-lg bg-accent/10 flex items-center justify-center text-accent text-[11px] sm:text-xs font-bold">1</span>
+                    Channel Ingestion Layer
                   </h4>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {channels.map((ch) => (
                       <span
                         key={ch.label}
-                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-medium"
+                        className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full border text-[11px] sm:text-xs font-medium"
                         style={{ borderColor: `${ch.color}40`, color: ch.color, background: `${ch.color}10` }}
                       >
                         {ch.icon} {ch.label}
@@ -172,15 +172,15 @@ export default function Architecture() {
                 </div>
 
                 <div>
-                  <h4 className="text-sm font-bold text-navy-900 mb-3 flex items-center gap-2">
-                    <span className="w-6 h-6 rounded-lg bg-accent/10 flex items-center justify-center text-accent text-xs font-bold">2</span>
+                  <h4 className="text-xs sm:text-sm font-bold text-navy-900 mb-2 sm:mb-3 flex items-center gap-2">
+                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-lg bg-accent/10 flex items-center justify-center text-accent text-[11px] sm:text-xs font-bold">2</span>
                     Enterprise Integration Layer
                   </h4>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {enterprise.map((e) => (
                       <span
                         key={e.label}
-                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-medium border-slate-300 text-slate-600"
+                        className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full border text-[11px] sm:text-xs font-medium border-slate-300 text-slate-700 bg-white"
                       >
                         {e.icon} {e.label}
                       </span>
@@ -189,8 +189,8 @@ export default function Architecture() {
                 </div>
               </div>
 
-              <div className="mt-8 p-5 bg-navy-900 rounded-xl">
-                <p className="text-sm text-white/70 leading-relaxed">
+              <div className="mt-6 sm:mt-8 p-4 sm:p-5 bg-navy-900 rounded-xl border border-white/5">
+                <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
                   Aethrion CX uses a standard API and webhook integration model. Connect to your
                   existing CRM, helpdesk, and backend systems without replacing your current
                   infrastructure.
@@ -200,7 +200,7 @@ export default function Architecture() {
           </RevealOnScroll>
 
           <RevealOnScroll direction="right" delay={100}>
-            <div className="bg-navy-950 rounded-2xl p-8 border border-white/10">
+            <div className="bg-navy-950 rounded-2xl p-4 sm:p-6 lg:p-8 border border-white/10 shadow-xl">
               <ArchDiagram />
             </div>
           </RevealOnScroll>

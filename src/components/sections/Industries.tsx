@@ -123,9 +123,9 @@ export default function Industries() {
     <section id="industries" className="section-padding bg-slate-50" aria-label="Industries served by Aethrion CX">
       <div className="container-wide">
         <RevealOnScroll>
-          <div className="max-w-2xl mb-16">
+          <div className="max-w-2xl mb-8 sm:mb-12 lg:mb-16 text-center sm:text-left">
             <SectionLabel>Industries</SectionLabel>
-            <h2 className="heading-section text-navy-900 mb-4">
+            <h2 className="heading-section text-navy-900 mb-3 sm:mb-4">
               Built for High-Volume Customer Interactions
             </h2>
             <p className="body-large">
@@ -135,27 +135,27 @@ export default function Industries() {
           </div>
         </RevealOnScroll>
 
-        <div className="grid lg:grid-cols-4 gap-8 items-start">
-          {/* Industry tabs */}
+        <div className="grid lg:grid-cols-4 gap-6 lg:gap-8 items-start">
+          {/* Industry tabs (horizontal scroll on mobile) */}
           <div className="lg:col-span-1">
-            <div className="flex flex-row lg:flex-col gap-2 overflow-x-auto pb-2 lg:pb-0 lg:overflow-visible">
-              {industries.map((ind) => (
+            <div className="flex flex-row lg:flex-col gap-2 overflow-x-auto no-scrollbar pb-3 lg:pb-0 snap-x">
+              {industries.map((item) => (
                 <button
-                  key={ind.id}
-                  onClick={() => setActive(ind.id)}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-xl border text-left whitespace-nowrap lg:whitespace-normal transition-all duration-200 min-w-max lg:min-w-0 lg:w-full ${
-                    active === ind.id
-                      ? "bg-navy-900 border-navy-700 text-white"
-                      : "bg-white border-slate-200 text-slate-600 hover:border-slate-300"
+                  key={item.id}
+                  onClick={() => setActive(item.id)}
+                  className={`flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl border text-left whitespace-nowrap lg:whitespace-normal transition-all duration-200 flex-shrink-0 snap-start lg:w-full ${
+                    active === item.id
+                      ? "bg-navy-900 border-navy-700 text-white shadow-sm"
+                      : "bg-white border-slate-200 text-slate-700 hover:border-slate-300"
                   }`}
                 >
-                  <span className="text-lg">{ind.icon}</span>
+                  <span className="text-base sm:text-lg">{item.icon}</span>
                   <div className="min-w-0">
-                    <div className={`text-sm font-semibold ${active === ind.id ? "text-white" : "text-slate-700"}`}>
-                      {ind.label}
+                    <div className={`text-xs sm:text-sm font-bold ${active === item.id ? "text-white" : "text-slate-800"}`}>
+                      {item.label}
                     </div>
-                    <div className={`text-xs hidden lg:block truncate ${active === ind.id ? "text-white/50" : "text-slate-400"}`}>
-                      {ind.fullLabel}
+                    <div className={`text-[10px] hidden lg:block truncate ${active === item.id ? "text-white/50" : "text-slate-400"}`}>
+                      {item.fullLabel}
                     </div>
                   </div>
                 </button>
@@ -167,42 +167,42 @@ export default function Industries() {
           <div className="lg:col-span-3">
             <div
               key={ind.id}
-              className="bg-white rounded-2xl border border-slate-200 p-8 shadow-card"
+              className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-7 lg:p-8 shadow-card"
             >
-              <div className="flex items-start gap-4 mb-6 pb-6 border-b border-slate-100">
+              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-slate-100">
                 <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0"
-                  style={{ background: `${ind.color}15` }}
+                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0"
+                  style={{ background: `${ind.color}15`, border: `1px solid ${ind.color}30` }}
                 >
                   {ind.icon}
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <div
-                    className="text-xs font-semibold uppercase tracking-widest mb-1"
+                    className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest mb-0.5"
                     style={{ color: ind.color }}
                   >
                     Industry Focus
                   </div>
-                  <h3 className="text-xl font-bold text-navy-900">{ind.fullLabel}</h3>
+                  <h3 className="text-base sm:text-xl font-bold text-navy-900 truncate sm:whitespace-normal">{ind.fullLabel}</h3>
                 </div>
               </div>
 
-              <p className="text-sm text-slate-600 leading-relaxed mb-8">{ind.description}</p>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 sm:mb-8">{ind.description}</p>
 
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                 {ind.highlights.map((h) => (
                   <div
                     key={h.label}
-                    className="flex gap-3 p-4 rounded-xl"
-                    style={{ background: `${ind.color}08` }}
+                    className="flex gap-2.5 p-3 sm:p-4 rounded-xl"
+                    style={{ background: `${ind.color}08`, border: `1px solid ${ind.color}18` }}
                   >
                     <span
                       className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0"
                       style={{ background: ind.color }}
                     />
                     <div>
-                      <div className="text-sm font-semibold text-slate-700 mb-1">{h.label}</div>
-                      <div className="text-xs text-slate-500 leading-snug">{h.desc}</div>
+                      <div className="text-xs sm:text-sm font-bold text-slate-800 mb-0.5">{h.label}</div>
+                      <div className="text-[11px] sm:text-xs text-slate-500 leading-snug">{h.desc}</div>
                     </div>
                   </div>
                 ))}

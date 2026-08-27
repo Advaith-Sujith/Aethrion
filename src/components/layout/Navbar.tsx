@@ -65,7 +65,7 @@ export default function Navbar() {
             {/* Brand Logo */}
             <a
               href="/"
-              className="flex items-center gap-2.5 group select-none"
+              className="flex items-center gap-2 sm:gap-2.5 group select-none min-w-0"
               aria-label="Aethrion CX — Home"
             >
               <div className="w-8 h-8 relative flex-shrink-0">
@@ -81,11 +81,11 @@ export default function Navbar() {
                   <circle cx="24" cy="14" r="2" fill="white" />
                 </svg>
               </div>
-              <div className="flex flex-col leading-none">
-                <span className="text-base font-bold tracking-tight text-white group-hover:text-accent transition-colors">
+              <div className="flex flex-col leading-none min-w-0">
+                <span className="text-sm sm:text-base font-bold tracking-tight text-white group-hover:text-accent transition-colors truncate">
                   Aethrion CX
                 </span>
-                <span className="text-[10px] font-medium tracking-wide text-white/50">
+                <span className="text-[9px] sm:text-[10px] font-medium tracking-wide text-white/50 truncate">
                   by AthenaServ Infotech
                 </span>
               </div>
@@ -123,7 +123,7 @@ export default function Navbar() {
 
             {/* Mobile menu button */}
             <button
-              className="lg:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-colors"
+              className="lg:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-colors flex-shrink-0"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle navigation menu"
               aria-expanded={mobileOpen}
@@ -154,8 +154,8 @@ export default function Navbar() {
           aria-modal="true"
           aria-label="Mobile navigation"
         >
-          <div className="flex flex-col h-full pt-20 px-6 pb-8">
-            <div className="flex justify-end mb-4">
+          <div className="flex flex-col h-full pt-16 px-5 pb-6 overflow-y-auto">
+            <div className="flex justify-end mb-2">
               <button
                 onClick={() => setMobileOpen(false)}
                 className="p-2 rounded-lg text-white/60 hover:text-white hover:bg-white/10"
@@ -167,22 +167,22 @@ export default function Navbar() {
               </button>
             </div>
 
-            <nav className="flex flex-col gap-1.5 mb-8">
+            <nav className="flex flex-col gap-1 mb-6">
               {navLinks.map((link) => (
                 <button
                   key={link.label}
                   onClick={() => handleNavClick(link.href)}
-                  className="text-left px-4 py-3 text-base font-semibold text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-colors"
+                  className="text-left px-3.5 py-2.5 text-sm font-semibold text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-colors"
                 >
                   {link.label}
                 </button>
               ))}
             </nav>
 
-            <div className="mt-auto flex flex-col gap-3">
+            <div className="mt-auto flex flex-col gap-2.5">
               <Button
                 variant="outline"
-                size="lg"
+                size="md"
                 onClick={(e) => {
                   e.preventDefault();
                   handleNavClick("#platform");
@@ -193,7 +193,7 @@ export default function Navbar() {
               </Button>
               <Button
                 variant="primary"
-                size="lg"
+                size="md"
                 onClick={handleDemoClick}
                 fullWidth
               >
@@ -201,7 +201,7 @@ export default function Navbar() {
               </Button>
             </div>
 
-            <p className="mt-6 text-center text-white/40 text-xs">
+            <p className="mt-4 text-center text-white/40 text-[11px]">
               Aethrion CX by AthenaServ Infotech
             </p>
           </div>

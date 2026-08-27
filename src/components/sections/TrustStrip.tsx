@@ -38,29 +38,33 @@ const metrics = [
 export default function TrustStrip() {
   return (
     <section
-      className="bg-white border-b border-slate-100"
+      className="bg-white border-b border-slate-100 relative z-10 overflow-hidden w-full"
       aria-label="Platform capabilities and metrics"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-slate-100">
-          {metrics.map((m, i) => (
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4">
+          {metrics.map((m, idx) => (
             <div
               key={m.label}
-              className={`flex flex-col items-center text-center py-8 px-6 ${
-                i % 2 === 0 ? "" : ""
+              className={`flex flex-col items-center text-center py-5 sm:py-8 px-2 sm:px-4 min-w-0 ${
+                idx % 2 === 1 ? "border-l border-slate-100" : ""
+              } ${idx >= 2 ? "border-t lg:border-t-0 border-slate-100" : ""} ${
+                idx > 0 && idx % 2 === 0 ? "lg:border-l border-slate-100" : ""
               }`}
             >
-              <div className="text-3xl lg:text-4xl font-bold text-navy-900 tracking-tight mb-1">
+              <div className="text-xl sm:text-3xl lg:text-4xl font-black text-navy-900 tracking-tight mb-1">
                 {m.suffix === "/7" ? (
                   "24/7"
                 ) : (
-                  <>
-                    <AnimatedCounter target={m.value} suffix={m.suffix} />
-                  </>
+                  <AnimatedCounter target={m.value} suffix={m.suffix} />
                 )}
               </div>
-              <div className="text-sm font-semibold text-slate-700 mb-0.5">{m.label}</div>
-              <div className="text-xs text-slate-400">{m.sub}</div>
+              <div className="text-xs sm:text-sm font-bold text-slate-800 mb-0.5 leading-snug truncate max-w-full">
+                {m.label}
+              </div>
+              <div className="text-[10px] sm:text-xs text-slate-400 leading-tight truncate max-w-full">
+                {m.sub}
+              </div>
             </div>
           ))}
         </div>

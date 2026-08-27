@@ -11,33 +11,33 @@ export default function FinalCTA() {
   };
 
   return (
-    <section id="contact" className="section-padding bg-navy-950" aria-label="Contact AthenaServ Infotech — Aethrion CX">
+    <section id="contact" className="section-padding bg-navy-950 relative" aria-label="Contact AthenaServ Infotech — Aethrion CX">
       {/* Subtle top border accent */}
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-accent/40 to-transparent mb-20" />
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-accent/40 to-transparent mb-10 sm:mb-16" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <RevealOnScroll>
           <div className="max-w-3xl mx-auto text-center">
             {/* Label */}
-            <div className="inline-flex items-center gap-2 mb-6 px-3.5 py-1.5 rounded-full border border-accent/30 bg-accent/10">
+            <div className="inline-flex items-center gap-2 mb-4 sm:mb-6 px-3.5 py-1.5 rounded-full border border-accent/30 bg-accent/10">
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              <span className="text-xs font-semibold tracking-wide text-accent">
+              <span className="text-[11px] sm:text-xs font-semibold tracking-wide text-accent">
                 Connect With AthenaServ Infotech
               </span>
             </div>
 
-            <h2 className="text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4 sm:mb-6">
               Ready to Transform{" "}
               <span className="text-accent">Customer Experience?</span>
             </h2>
 
-            <p className="text-base sm:text-lg text-white/60 leading-relaxed mb-10 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base lg:text-lg text-white/70 leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto">
               See how Aethrion CX fits your customer service operations, omnichannel workflows, and
               industry requirements. Connect directly with our solutions team to discuss your deployment.
             </p>
 
-            {/* Action Buttons — Book a Demo is NOT present here as requested */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            {/* Action Button */}
+            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-8 sm:mb-12">
               <Button
                 variant="primary"
                 size="lg"
@@ -53,22 +53,22 @@ export default function FinalCTA() {
             </div>
 
             {/* Direct Contact Card */}
-            <div className="inline-flex flex-col sm:flex-row items-center gap-3 p-3.5 sm:px-6 sm:py-3 rounded-2xl bg-navy-900 border border-white/10 mb-14 text-xs">
-              <div className="flex items-center gap-2 text-white/70">
-                <span className="w-2 h-2 rounded-full bg-green-400" />
-                <span>Direct Lead Contact:</span>
-                <span className="font-semibold text-white font-mono">rani@athenaserv.com</span>
+            <div className="inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-3 p-3 sm:px-6 sm:py-3 rounded-2xl bg-navy-900 border border-white/10 mb-10 sm:mb-14 text-xs max-w-full">
+              <div className="flex items-center gap-2 text-white/70 truncate">
+                <span className="w-2 h-2 rounded-full bg-green-400 flex-shrink-0" />
+                <span className="hidden sm:inline">Direct Lead Contact:</span>
+                <span className="font-semibold text-white font-mono truncate">rani@athenaserv.com</span>
               </div>
               <button
                 onClick={handleTalkClick}
-                className="text-accent hover:text-accent-light font-medium underline underline-offset-2 transition-colors ml-0 sm:ml-2"
+                className="text-accent hover:text-accent-light font-semibold underline underline-offset-2 transition-colors"
               >
-                Send Message / Request Details →
+                Send Message / Details →
               </button>
             </div>
 
             {/* Trust bullets */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-xs sm:text-sm text-white/40">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-white/50">
               {[
                 "No commitment required",
                 "Tailored to your industry",
@@ -87,11 +87,11 @@ export default function FinalCTA() {
 
         {/* Industry demo tags */}
         <RevealOnScroll delay={150}>
-          <div className="mt-16 border-t border-white/10 pt-12 text-center">
-            <p className="text-xs text-white/30 font-medium uppercase tracking-widest mb-4">
+          <div className="mt-12 sm:mt-16 border-t border-white/10 pt-8 sm:pt-12 text-center">
+            <p className="text-[10px] sm:text-xs text-white/40 font-medium uppercase tracking-widest mb-3 sm:mb-4">
               Solutions Available For
             </p>
-            <div className="flex flex-wrap justify-center gap-2">
+            <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2">
               {[
                 "BFSI",
                 "Ecommerce & Retail",
@@ -103,7 +103,7 @@ export default function FinalCTA() {
               ].map((ind) => (
                 <span
                   key={ind}
-                  className="px-3.5 py-1.5 rounded-full border border-white/10 text-xs text-white/50 hover:border-accent/30 hover:text-accent/70 transition-colors"
+                  className="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-white/10 text-[11px] sm:text-xs text-white/60 hover:border-accent/30 hover:text-accent/80 transition-colors"
                 >
                   {ind}
                 </span>

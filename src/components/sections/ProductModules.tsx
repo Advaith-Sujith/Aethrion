@@ -13,19 +13,19 @@ const modules = [
     color: "#0ea5e9",
     angle: 270,
     description:
-      "Full inbound and outbound call center capabilities with ACD, IVR, call recording, skill-based routing, and real-time supervision.",
-    capabilities: ["ACD & IVR", "Call recording", "Skill-based routing", "Real-time monitoring", "Outbound dialing"],
+      "Full inbound and outbound contact center capabilities with ACD, IVR, voice recording, skill-based routing, and real-time supervisor controls.",
+    capabilities: ["ACD & Smart IVR", "Call Recording & Archival", "Skill-Based Agent Routing", "Real-Time Supervision", "Automated Outbound Campaigns"],
   },
   {
     id: "crm",
-    label: "CRM",
+    label: "Customer CRM",
     shortLabel: "CRM",
     icon: "🗃️",
     color: "#8b5cf6",
     angle: 315,
     description:
-      "Built-in CRM for managing customer profiles, interaction history, and relationships — or connect to your existing CRM.",
-    capabilities: ["Customer profiles", "Interaction history", "Case management", "Pipeline tracking", "Contact management"],
+      "Built-in CRM for managing complete customer profiles, omnichannel interaction history, account milestones, and relationship lifecycle data.",
+    capabilities: ["Unified Customer Profiles", "Cross-Channel History", "Lifecycle Stage Tracking", "Relationship Insights", "Enterprise CRM Connectors"],
   },
   {
     id: "support",
@@ -35,8 +35,8 @@ const modules = [
     color: "#22c55e",
     angle: 0,
     description:
-      "Helpdesk and ticketing functionality with SLA tracking, automated assignment, escalation rules, and cross-channel case management.",
-    capabilities: ["Ticket management", "SLA tracking", "Auto-assignment", "Escalation rules", "Priority queues"],
+      "Enterprise ticketing and case resolution with strict SLA monitoring, intelligent auto-assignment, multi-tiered escalation, and audit logging.",
+    capabilities: ["Multi-Channel Ticketing", "SLA Adherence Engines", "Automated Assignment", "Dynamic Escalation Triggers", "Priority Service Queues"],
   },
   {
     id: "digital-assistants",
@@ -46,8 +46,8 @@ const modules = [
     color: "#f59e0b",
     angle: 45,
     description:
-      "Conversational AI bots for voice and text — handling routine queries, verifying identities, and handing off to agents with full context.",
-    capabilities: ["Voice bots", "Chat bots", "Intent detection", "70+ languages", "Seamless handoff"],
+      "Conversational voice and chat bots supporting 70+ languages — resolving routine inquiries, validating caller intent, and enabling context-rich handoffs.",
+    capabilities: ["Voice Bots (IVR & Outbound)", "Digital Chatbots", "70+ Languages & 12 Indian", "Intent & Entity Extraction", "Zero-Loss Context Handoff"],
   },
   {
     id: "omnichannel",
@@ -57,8 +57,8 @@ const modules = [
     color: "#ef4444",
     angle: 90,
     description:
-      "Unified channel management across voice, chat, email, WhatsApp, SMS, and social — with a single customer view across all touchpoints.",
-    capabilities: ["Voice & chat", "Email & WhatsApp", "Social channels", "SMS", "Unified queue"],
+      "Single orchestration layer unifying voice, chat, email, WhatsApp, SMS, and social media interactions into one synchronized queue.",
+    capabilities: ["Synchronized Universal Queue", "Voice & Digital Unified", "WhatsApp & Social Integration", "Session Persistence", "Cross-Channel Routing"],
   },
   {
     id: "agent-hub",
@@ -68,8 +68,8 @@ const modules = [
     color: "#06b6d4",
     angle: 135,
     description:
-      "The unified agent workspace combining conversation management, customer context, AI assist, knowledge base, and quality tools in one view.",
-    capabilities: ["Unified workspace", "AI assist panel", "Knowledge base", "Customer 360", "Wrap-up tools"],
+      "Unified single-pane workspace combining conversation streams, customer 360 data, GenAI assist recommendations, and knowledge repositories.",
+    capabilities: ["Single Pane of Glass", "GenAI Response Suggestions", "Instant Knowledge Retrieval", "Customer 360 Live Feed", "Automated Call Wrap-up"],
   },
   {
     id: "analytics",
@@ -79,8 +79,8 @@ const modules = [
     color: "#10b981",
     angle: 180,
     description:
-      "Real-time and historical analytics dashboards, agent performance metrics, CSAT tracking, and AI-powered workforce insights.",
-    capabilities: ["Real-time dashboards", "Historical reports", "CSAT tracking", "Agent metrics", "Workforce insights"],
+      "Live operational dashboards, historical trends, predictive CSAT modeling, and AI-driven workforce optimization metrics.",
+    capabilities: ["Real-Time Operations Dashboards", "Historical Reporting Suites", "Predictive CSAT Scoring", "Agent Quality Scoring", "Workforce Utilization Insights"],
   },
   {
     id: "sentiment",
@@ -90,8 +90,8 @@ const modules = [
     color: "#f43f5e",
     angle: 225,
     description:
-      "AI-powered sentiment analysis across voice and text — detecting emotion, intent, and escalation risk across 70+ languages in real time.",
-    capabilities: ["Real-time analysis", "Voice & text", "85% accuracy", "70+ languages", "Escalation alerts"],
+      "Real-time acoustic and linguistic sentiment intelligence across voice and text with 85% accuracy and automated supervisor alerts.",
+    capabilities: ["Real-Time Emotion Detection", "Voice Acoustic & Tone Analysis", "85% Validated Accuracy", "70+ Languages Supported", "Live Escalation Alerts"],
   },
 ];
 
@@ -100,34 +100,57 @@ const CY = 160;
 const RADIUS = 110;
 
 export default function ProductModules() {
-  const [activeModule, setActiveModule] = useState<string | null>(null);
+  const [activeModule, setActiveModule] = useState<string>("call-center");
 
-  const active = modules.find((m) => m.id === activeModule) ?? null;
+  const active = modules.find((m) => m.id === activeModule) ?? modules[0];
 
   return (
     <section id="modules" className="section-padding bg-navy-950" aria-label="Aethrion CX product modules">
       <div className="container-wide">
         <RevealOnScroll>
-          <div className="max-w-2xl mb-16">
+          <div className="max-w-2xl mb-8 sm:mb-12 lg:mb-16 text-center sm:text-left">
             <SectionLabel light>Platform Architecture</SectionLabel>
-            <h2 className="heading-section text-white mb-4">
+            <h2 className="heading-section text-white mb-3 sm:mb-4">
               Eight Integrated Modules.{" "}
               <span className="text-accent">One CX Operating System.</span>
             </h2>
             <p className="body-large text-white/60">
-              Click any module to explore its capabilities. Every module is natively integrated —
-              sharing data, context, and intelligence across the entire platform.
+              Every module is natively built to share customer context, intelligence, and workflows
+              without siloed data or expensive custom middleware.
             </p>
           </div>
         </RevealOnScroll>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Hub diagram */}
+        {/* Mobile / Tablet Horizontal Module Switcher (<lg) */}
+        <div className="lg:hidden flex gap-2 overflow-x-auto no-scrollbar pb-3 mb-6 snap-x">
+          {modules.map((m, i) => {
+            const isSel = activeModule === m.id;
+            return (
+              <button
+                key={m.id}
+                onClick={() => setActiveModule(m.id)}
+                className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl border text-xs font-semibold whitespace-nowrap transition-all duration-200 flex-shrink-0 snap-start"
+                style={{
+                  borderColor: isSel ? m.color : "rgba(255,255,255,0.12)",
+                  background: isSel ? `${m.color}20` : "rgba(255,255,255,0.03)",
+                  color: isSel ? "#ffffff" : "rgba(255,255,255,0.7)",
+                }}
+              >
+                <span>{m.icon}</span>
+                <span>{m.shortLabel}</span>
+                <span className="text-[10px] opacity-60">#{i + 1}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Desktop SVG Hub Diagram (>=lg) */}
           <RevealOnScroll direction="left">
-            <div className="flex justify-center">
+            <div className="hidden lg:flex justify-center">
               <svg
                 viewBox="0 0 320 320"
-                className="w-full max-w-sm cursor-pointer"
+                className="w-full max-w-sm cursor-pointer select-none"
                 role="img"
                 aria-label="Interactive diagram of Aethrion CX modules"
               >
@@ -136,6 +159,7 @@ export default function ProductModules() {
                   const rad = (m.angle * Math.PI) / 180;
                   const x = CX + RADIUS * Math.cos(rad);
                   const y = CY + RADIUS * Math.sin(rad);
+                  const isSel = activeModule === m.id;
                   return (
                     <line
                       key={m.id + "-line"}
@@ -143,24 +167,24 @@ export default function ProductModules() {
                       y1={CY}
                       x2={x}
                       y2={y}
-                      stroke={activeModule === m.id ? m.color : "rgba(255,255,255,0.08)"}
-                      strokeWidth={activeModule === m.id ? 2 : 1}
-                      strokeDasharray={activeModule === m.id ? "none" : "4 3"}
+                      stroke={isSel ? m.color : "rgba(255,255,255,0.1)"}
+                      strokeWidth={isSel ? 2.5 : 1}
+                      strokeDasharray={isSel ? "none" : "4 3"}
                       className="transition-all duration-300"
                     />
                   );
                 })}
 
                 {/* Center node */}
-                <circle cx={CX} cy={CY} r="40" fill="#0d1630" stroke="#0ea5e9" strokeWidth="2" />
-                <circle cx={CX} cy={CY} r="34" fill="#0ea5e9" fillOpacity="0.08" />
-                <text x={CX} y={CY - 6} textAnchor="middle" fill="#0ea5e9" fontSize="10" fontWeight="700">
+                <circle cx={CX} cy={CY} r="40" fill="#0d1630" stroke="#0ea5e9" strokeWidth="2.5" />
+                <circle cx={CX} cy={CY} r="34" fill="#0ea5e9" fillOpacity="0.1" />
+                <text x={CX} y={CY - 6} textAnchor="middle" fill="#0ea5e9" fontSize="10" fontWeight="800">
                   Aethrion
                 </text>
-                <text x={CX} y={CY + 8} textAnchor="middle" fill="#0ea5e9" fontSize="10" fontWeight="700">
+                <text x={CX} y={CY + 8} textAnchor="middle" fill="#0ea5e9" fontSize="10" fontWeight="800">
                   CX
                 </text>
-                <text x={CX} y={CY + 20} textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="7">
+                <text x={CX} y={CY + 20} textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="7" fontWeight="600">
                   Platform Core
                 </text>
 
@@ -169,24 +193,24 @@ export default function ProductModules() {
                   const rad = (m.angle * Math.PI) / 180;
                   const x = CX + RADIUS * Math.cos(rad);
                   const y = CY + RADIUS * Math.sin(rad);
-                  const isActive = activeModule === m.id;
+                  const isSel = activeModule === m.id;
 
                   return (
                     <g
                       key={m.id}
-                      onClick={() => setActiveModule(isActive ? null : m.id)}
+                      onClick={() => setActiveModule(m.id)}
                       className="cursor-pointer"
                       role="button"
                       aria-label={`${m.label} module`}
-                      aria-pressed={isActive}
+                      aria-pressed={isSel}
                     >
                       <circle
                         cx={x}
                         cy={y}
                         r="24"
-                        fill={isActive ? m.color : "#112244"}
+                        fill={isSel ? m.color : "#112244"}
                         stroke={m.color}
-                        strokeWidth={isActive ? 2.5 : 1.5}
+                        strokeWidth={isSel ? 3 : 1.5}
                         className="transition-all duration-200"
                       />
                       <text x={x} y={y - 2} textAnchor="middle" fontSize="12">
@@ -196,9 +220,9 @@ export default function ProductModules() {
                         x={x}
                         y={y + 12}
                         textAnchor="middle"
-                        fill={isActive ? "white" : "rgba(255,255,255,0.5)"}
+                        fill={isSel ? "white" : "rgba(255,255,255,0.6)"}
                         fontSize="6.5"
-                        fontWeight="600"
+                        fontWeight="700"
                         className="transition-all duration-200"
                       >
                         {m.shortLabel}
@@ -210,74 +234,50 @@ export default function ProductModules() {
             </div>
           </RevealOnScroll>
 
-          {/* Detail panel */}
+          {/* Module Details Card */}
           <RevealOnScroll direction="right">
-            <div className="min-h-64">
-              {active ? (
-                <div
-                  key={active.id}
-                  className="bg-navy-900 border rounded-2xl p-8 transition-all duration-300"
-                  style={{ borderColor: `${active.color}40` }}
-                >
-                  <div className="flex items-center gap-3 mb-5">
-                    <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
-                      style={{ background: `${active.color}20` }}
-                    >
-                      {active.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-white">{active.label}</h3>
-                      <span
-                        className="text-xs font-semibold"
-                        style={{ color: active.color }}
-                      >
-                        Module {modules.findIndex((m) => m.id === active.id) + 1} of 8
-                      </span>
-                    </div>
-                  </div>
-                  <p className="text-sm text-white/70 leading-relaxed mb-6">{active.description}</p>
-                  <div className="space-y-2">
-                    {active.capabilities.map((cap) => (
-                      <div key={cap} className="flex items-center gap-3">
-                        <span
-                          className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                          style={{ background: active.color }}
-                        />
-                        <span className="text-sm text-white/60">{cap}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                <div className="bg-navy-900 border border-white/10 rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-64">
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
-                    <svg className="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
-                    </svg>
-                  </div>
-                  <p className="text-white/40 text-sm">
-                    Select a module from the diagram to explore its capabilities.
-                  </p>
-                </div>
-              )}
-
-              {/* Module list (mobile) */}
-              <div className="mt-6 grid grid-cols-2 gap-2 lg:hidden">
-                {modules.map((m) => (
-                  <button
-                    key={m.id}
-                    onClick={() => setActiveModule(activeModule === m.id ? null : m.id)}
-                    className="flex items-center gap-2 px-3 py-2 rounded-lg border text-left transition-all duration-200"
-                    style={{
-                      borderColor: activeModule === m.id ? m.color : "rgba(255,255,255,0.1)",
-                      background: activeModule === m.id ? `${m.color}15` : "transparent",
-                    }}
+            <div className="w-full">
+              <div
+                key={active.id}
+                className="bg-navy-900 border rounded-2xl p-5 sm:p-7 transition-all duration-300 shadow-xl"
+                style={{ borderColor: `${active.color}40` }}
+              >
+                <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5 pb-3 border-b border-white/10">
+                  <div
+                    className="w-11 h-11 sm:w-13 sm:h-13 rounded-xl flex items-center justify-center text-xl sm:text-2xl flex-shrink-0"
+                    style={{ background: `${active.color}20`, border: `1px solid ${active.color}40` }}
                   >
-                    <span className="text-base">{m.icon}</span>
-                    <span className="text-xs text-white/70">{m.shortLabel}</span>
-                  </button>
-                ))}
+                    {active.icon}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-base sm:text-lg font-bold text-white truncate">{active.label}</h3>
+                    <span
+                      className="text-xs font-semibold"
+                      style={{ color: active.color }}
+                    >
+                      Module {modules.findIndex((m) => m.id === active.id) + 1} of 8 · Integrated Core
+                    </span>
+                  </div>
+                </div>
+
+                <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-5">
+                  {active.description}
+                </p>
+
+                <div className="space-y-2">
+                  <div className="text-[10px] font-semibold uppercase tracking-widest text-white/40 mb-2">
+                    Key Capabilities
+                  </div>
+                  {active.capabilities.map((cap) => (
+                    <div key={cap} className="flex items-center gap-2.5 p-2 rounded-lg bg-navy-950/40 border border-white/5">
+                      <span
+                        className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        style={{ background: active.color }}
+                      />
+                      <span className="text-xs text-white/80 font-medium">{cap}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </RevealOnScroll>

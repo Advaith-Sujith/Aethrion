@@ -14,7 +14,7 @@ const mechanisms = [
     ),
     label: "Textual Cue Detection",
     description:
-      "Analyze wording, phrasing, and linguistic patterns to identify customer emotion and intent within text-based interactions.",
+      "Analyze phrasing, linguistic cadence, and emotional intent within live text chats, emails, and WhatsApp messages.",
   },
   {
     icon: (
@@ -24,7 +24,7 @@ const mechanisms = [
     ),
     label: "Voice Tone Analysis",
     description:
-      "Analyze pitch, pace, stress indicators, and prosodic features in voice interactions to detect emotional state and escalation risk.",
+      "Detect pitch variances, speaking pace, customer hesitation, and acoustic stress indicators in live voice calls.",
   },
   {
     icon: (
@@ -34,7 +34,7 @@ const mechanisms = [
     ),
     label: "Contextual Understanding",
     description:
-      "Interpret sentiment within the full arc of the conversation — not just individual messages — for deeper, more accurate emotional intelligence.",
+      "Interpret sentiment across the entire conversational lifecycle rather than isolating single messages out of context.",
   },
   {
     icon: (
@@ -44,7 +44,7 @@ const mechanisms = [
     ),
     label: "Multilingual Analysis",
     description:
-      "Process conversations across 70+ languages — including 12 Indian languages — with consistent sentiment accuracy across all supported languages.",
+      "Process customer interactions across 70+ languages — including 12 native Indian languages — with consistent accuracy.",
   },
 ];
 
@@ -70,7 +70,7 @@ function SentimentChart() {
 
   const w = 460;
   const h = 120;
-  const padding = 20;
+  const padding = 15;
   const chartW = w - padding * 2;
   const chartH = h - padding * 2;
 
@@ -86,37 +86,37 @@ function SentimentChart() {
     currentSentiment >= 65 ? "#22c55e" : currentSentiment >= 45 ? "#f59e0b" : "#ef4444";
 
   return (
-    <div className="bg-navy-900 rounded-2xl border border-white/10 p-6 overflow-hidden">
+    <div className="bg-navy-900 rounded-2xl border border-white/10 p-4 sm:p-6 overflow-hidden shadow-2xl">
       {/* Header */}
-      <div className="flex items-center justify-between mb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 sm:mb-5 pb-3 border-b border-white/10">
         <div>
-          <div className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-1">
-            Live Sentiment Feed
+          <div className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-white/30 mb-1">
+            Real-Time Emotion Engine
           </div>
           <div className="flex items-center gap-2">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
             </span>
-            <span className="text-xs text-green-400 font-medium">Monitoring Active</span>
+            <span className="text-xs text-green-400 font-medium">Acoustic &amp; Linguistic Feed</span>
           </div>
         </div>
-        <div className="text-right">
+        <div className="flex items-center sm:flex-col sm:items-end justify-between sm:justify-start">
           <div
-            className="text-3xl font-black transition-all duration-700"
+            className="text-2xl sm:text-3xl font-black transition-all duration-700 leading-none"
             style={{ color: sentimentColor }}
           >
             {currentSentiment}%
           </div>
-          <div className="text-xs text-white/40">Positive</div>
+          <div className="text-[10px] sm:text-xs text-white/50">Positive Index</div>
         </div>
       </div>
 
       {/* Waveform / timeline */}
-      <div className="mb-5">
+      <div className="mb-4 sm:mb-5 bg-navy-950/40 p-2 rounded-xl border border-white/5">
         <svg
           viewBox={`0 0 ${w} ${h}`}
-          className="w-full"
+          className="w-full h-20 sm:h-28"
           aria-label="Sentiment timeline chart"
         >
           <defs>
@@ -133,14 +133,14 @@ function SentimentChart() {
               y1={padding + (1 - v / 100) * chartH}
               x2={w - padding}
               y2={padding + (1 - v / 100) * chartH}
-              stroke="rgba(255,255,255,0.05)"
+              stroke="rgba(255,255,255,0.06)"
               strokeWidth="1"
             />
           ))}
           {/* Area fill */}
           <path d={areaD} fill="url(#sentArea)" />
           {/* Line */}
-          <path d={pathD} fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" />
+          <path d={pathD} fill="none" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" />
           {/* Last point indicator */}
           <circle cx={points[points.length - 1].x} cy={points[points.length - 1].y} r="4" fill="#22c55e" />
           <circle cx={points[points.length - 1].x} cy={points[points.length - 1].y} r="8" fill="#22c55e" fillOpacity="0.2" className={animated ? "animate-ping" : ""} />
@@ -148,9 +148,9 @@ function SentimentChart() {
       </div>
 
       {/* Sentiment breakdown + escalation alert */}
-      <div className="grid grid-cols-2 gap-4">
-        <div>
-          <div className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+        <div className="bg-navy-950/40 p-3 rounded-xl border border-white/5">
+          <div className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-2">
             Distribution
           </div>
           {[
@@ -158,45 +158,41 @@ function SentimentChart() {
             { label: "Neutral", value: 23, color: "#f59e0b" },
             { label: "Negative", value: 15, color: "#ef4444" },
           ].map((d) => (
-            <div key={d.label} className="flex items-center gap-2 mb-2">
+            <div key={d.label} className="flex items-center gap-2 mb-1.5 last:mb-0">
               <div className="flex-1 h-1.5 bg-white/10 rounded-full">
                 <div
                   className="h-full rounded-full transition-all duration-700"
                   style={{ width: `${d.value}%`, background: d.color }}
                 />
               </div>
-              <span className="text-[10px] font-bold w-8 text-right" style={{ color: d.color }}>
+              <span className="text-[10px] font-bold w-7 text-right" style={{ color: d.color }}>
                 {d.value}%
               </span>
-              <span className="text-[10px] text-white/40 w-12">{d.label}</span>
+              <span className="text-[10px] text-white/50 w-12">{d.label}</span>
             </div>
           ))}
         </div>
 
         <div className="space-y-2">
           {/* Escalation alert */}
-          <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-3">
-            <div className="flex items-center gap-1.5 mb-1">
-              <svg className="w-3 h-3 text-red-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-              </svg>
-              <span className="text-[10px] font-semibold text-red-400">Escalation Risk</span>
+          <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-2.5 sm:p-3">
+            <div className="flex items-center gap-1.5 mb-0.5">
+              <span className="text-red-400 text-xs">⚠</span>
+              <span className="text-[10px] font-bold text-red-400">Escalation Safeguard</span>
             </div>
-            <p className="text-[10px] text-white/60 leading-snug">
-              Call #4821 — Negative trajectory detected. Supervisor alert triggered.
+            <p className="text-[10px] text-white/70 leading-snug">
+              Call #4821 — Tone stress detected. Automated supervisor whisper active.
             </p>
           </div>
 
           {/* Coach suggestion */}
-          <div className="bg-accent/10 border border-accent/30 rounded-xl p-3">
-            <div className="flex items-center gap-1.5 mb-1">
-              <svg className="w-3 h-3 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
-              </svg>
-              <span className="text-[10px] font-semibold text-accent">Coach Suggestion</span>
+          <div className="bg-accent/10 border border-accent/30 rounded-xl p-2.5 sm:p-3">
+            <div className="flex items-center gap-1.5 mb-0.5">
+              <span className="text-accent text-xs">💡</span>
+              <span className="text-[10px] font-bold text-accent">Coaching Prompt</span>
             </div>
-            <p className="text-[10px] text-white/60 leading-snug">
-              Use empathy acknowledgment. Offer resolution timeline.
+            <p className="text-[10px] text-white/70 leading-snug">
+              Acknowledge wait time. Provide instant resolution commitment.
             </p>
           </div>
         </div>
@@ -209,55 +205,55 @@ export default function SentimentAnalytics() {
   return (
     <section id="sentiment" className="section-padding bg-white" aria-label="Sentiment analytics capabilities">
       <div className="container-wide">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Text content */}
           <RevealOnScroll direction="left">
             <div>
               <SectionLabel>Sentiment Intelligence</SectionLabel>
-              <h2 className="heading-section text-navy-900 mb-4">
+              <h2 className="heading-section text-navy-900 mb-3 sm:mb-4">
                 Know What Your Customers Are Feeling — In Real Time.
               </h2>
-              <p className="body-large mb-8">
+              <p className="body-large mb-6 sm:mb-8">
                 Aethrion CX analyzes customer emotion and tone across voice and text to help teams
                 identify escalation risks, coach agents effectively, and improve customer experience
                 outcomes.
               </p>
 
-              {/* Metrics */}
-              <div className="grid grid-cols-2 gap-4 mb-10">
+              {/* Metrics Grid */}
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-4 mb-6 sm:mb-10">
                 {[
-                  { value: 70, suffix: "+", label: "Languages", sub: "Including 12 Indian languages" },
-                  { value: 85, suffix: "%", label: "Accuracy", sub: "Sentiment detection" },
+                  { value: 70, suffix: "+", label: "Languages", sub: "70+ Global Languages" },
+                  { value: 85, suffix: "%", label: "Accuracy", sub: "Sentiment Engine" },
                 ].map((m) => (
-                  <div key={m.label} className="bg-slate-50 rounded-xl border border-slate-200 p-4">
-                    <div className="text-2xl font-black text-navy-900 mb-1">
+                  <div key={m.label} className="bg-slate-50 rounded-xl border border-slate-200 p-3 sm:p-4">
+                    <div className="text-xl sm:text-2xl lg:text-3xl font-black text-navy-900 mb-0.5">
                       <AnimatedCounter target={m.value} suffix={m.suffix} />
                     </div>
-                    <div className="text-sm font-semibold text-slate-700 mb-0.5">{m.label}</div>
-                    <div className="text-xs text-slate-400">{m.sub}</div>
+                    <div className="text-xs sm:text-sm font-bold text-slate-800">{m.label}</div>
+                    <div className="text-[10px] sm:text-xs text-slate-400">{m.sub}</div>
                   </div>
                 ))}
                 {[
-                  { value: "12", label: "Indian Languages", sub: "Native language support" },
-                  { value: "24/7", label: "Monitoring", sub: "Always-on analysis" },
+                  { value: "12", label: "Indian Languages", sub: "Native Indic Dialects" },
+                  { value: "24/7", label: "Monitoring", sub: "Continuous Analysis" },
                 ].map((m) => (
-                  <div key={m.label} className="bg-slate-50 rounded-xl border border-slate-200 p-4">
-                    <div className="text-2xl font-black text-navy-900 mb-1">{m.value}</div>
-                    <div className="text-sm font-semibold text-slate-700 mb-0.5">{m.label}</div>
-                    <div className="text-xs text-slate-400">{m.sub}</div>
+                  <div key={m.label} className="bg-slate-50 rounded-xl border border-slate-200 p-3 sm:p-4">
+                    <div className="text-xl sm:text-2xl lg:text-3xl font-black text-navy-900 mb-0.5">{m.value}</div>
+                    <div className="text-xs sm:text-sm font-bold text-slate-800">{m.label}</div>
+                    <div className="text-[10px] sm:text-xs text-slate-400">{m.sub}</div>
                   </div>
                 ))}
               </div>
 
               {/* Mechanisms */}
-              <div className="space-y-4">
-                {mechanisms.map((m, i) => (
-                  <div key={m.label} className="flex gap-4 items-start">
-                    <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center text-accent flex-shrink-0">
+              <div className="space-y-3 sm:space-y-4">
+                {mechanisms.map((m) => (
+                  <div key={m.label} className="flex gap-3 sm:gap-4 items-start">
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-accent/10 flex items-center justify-center text-accent flex-shrink-0 mt-0.5">
                       {m.icon}
                     </div>
-                    <div>
-                      <h4 className="text-sm font-bold text-navy-900 mb-1">{m.label}</h4>
+                    <div className="min-w-0 flex-1">
+                      <h4 className="text-xs sm:text-sm font-bold text-navy-900 mb-0.5">{m.label}</h4>
                       <p className="text-xs text-slate-500 leading-relaxed">{m.description}</p>
                     </div>
                   </div>

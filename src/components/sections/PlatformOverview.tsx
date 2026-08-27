@@ -18,22 +18,22 @@ const capabilities = [
       "Manage voice, chat, email, WhatsApp, and social interactions from a single workspace. Intelligent routing ensures every customer reaches the right agent with full context.",
     features: ["Unified agent desktop", "Intelligent routing", "Cross-channel context", "Queue management"],
     preview: (
-      <div className="bg-navy-900 rounded-xl p-4 border border-white/10 space-y-3">
+      <div className="bg-navy-900 rounded-xl p-3 sm:p-4 border border-white/10 space-y-2.5 sm:space-y-3">
         {[
           { ch: "📞 Voice", customer: "Meera Nair", wait: "0:45", status: "active", color: "#0ea5e9" },
           { ch: "💬 Chat", customer: "Ravi Sharma", wait: "1:12", status: "active", color: "#22c55e" },
           { ch: "✉️ Email", customer: "Priya Pillai", wait: "2:30", status: "waiting", color: "#8b5cf6" },
           { ch: "📱 WhatsApp", customer: "Ankit Das", wait: "0:18", status: "active", color: "#25d366" },
         ].map((item) => (
-          <div key={item.customer} className="flex items-center gap-3 py-2 border-b border-white/5 last:border-0">
-            <span className="text-sm">{item.ch.split(" ")[0]}</span>
+          <div key={item.customer} className="flex items-center gap-2 sm:gap-3 py-1.5 sm:py-2 border-b border-white/5 last:border-0">
+            <span className="text-xs sm:text-sm flex-shrink-0">{item.ch.split(" ")[0]}</span>
             <div className="flex-1 min-w-0">
-              <div className="text-xs font-medium text-white/80">{item.customer}</div>
+              <div className="text-xs font-semibold text-white/90 truncate">{item.customer}</div>
               <div className="text-[10px] text-white/40">{item.ch.split(" ")[1]}</div>
             </div>
-            <span className="text-xs text-white/40">{item.wait}</span>
+            <span className="text-[11px] sm:text-xs text-white/40">{item.wait}</span>
             <span
-              className="text-[10px] px-2 py-0.5 rounded-full font-medium"
+              className="text-[9px] sm:text-[10px] px-2 py-0.5 rounded-full font-medium"
               style={{ background: `${item.color}20`, color: item.color }}
             >
               {item.status}
@@ -56,8 +56,8 @@ const capabilities = [
       "Deploy multilingual conversational AI across voice and digital channels. Bots handle routine interactions, then hand off to agents with full conversation context intact.",
     features: ["70+ languages", "Voice + text bots", "Context handoff", "Intent detection"],
     preview: (
-      <div className="bg-navy-900 rounded-xl p-4 border border-white/10 space-y-3">
-        <div className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-2">
+      <div className="bg-navy-900 rounded-xl p-3 sm:p-4 border border-white/10 space-y-2.5 sm:space-y-3">
+        <div className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-1">
           AI Bot Conversation
         </div>
         {[
@@ -68,10 +68,10 @@ const capabilities = [
         ].map((msg, i) => (
           <div key={i} className={`flex gap-2 ${msg.role === "bot" ? "flex-row-reverse" : ""}`}>
             <div
-              className={`text-[10px] px-3 py-1.5 rounded-lg max-w-[80%] ${
+              className={`text-[11px] sm:text-xs px-3 py-1.5 rounded-lg max-w-[85%] ${
                 msg.role === "bot"
-                  ? "bg-accent/20 text-accent border border-accent/20"
-                  : "bg-navy-800 text-white/70"
+                  ? "bg-accent/20 text-accent-light border border-accent/25"
+                  : "bg-navy-800 text-white/80"
               }`}
             >
               {msg.text}
@@ -94,14 +94,14 @@ const capabilities = [
       "Aethrion CX analyzes emotion and tone across every voice and text interaction. Detect escalation risks early, coach agents proactively, and improve experience outcomes.",
     features: ["85% accuracy", "Voice + text", "Real-time alerts", "Trend analytics"],
     preview: (
-      <div className="bg-navy-900 rounded-xl p-4 border border-white/10">
-        <div className="flex justify-between items-center mb-3">
+      <div className="bg-navy-900 rounded-xl p-3 sm:p-4 border border-white/10">
+        <div className="flex justify-between items-center mb-2 sm:mb-3">
           <span className="text-[10px] font-semibold uppercase tracking-widest text-white/30">
             Sentiment Timeline
           </span>
-          <span className="text-[10px] text-accent">Live</span>
+          <span className="text-[10px] text-accent font-semibold">Live</span>
         </div>
-        <svg viewBox="0 0 240 80" className="w-full h-16 mb-3">
+        <svg viewBox="0 0 240 80" className="w-full h-14 sm:h-16 mb-3">
           <defs>
             <linearGradient id="sentGrad" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#22c55e" stopOpacity="0.3" />
@@ -120,15 +120,15 @@ const capabilities = [
             fill="url(#sentGrad)"
           />
         </svg>
-        <div className="flex gap-3">
+        <div className="flex gap-2 sm:gap-3">
           {[
             { label: "Positive", v: 62, c: "#22c55e" },
             { label: "Neutral", v: 23, c: "#f59e0b" },
             { label: "Negative", v: 15, c: "#ef4444" },
           ].map((d) => (
-            <div key={d.label} className="flex-1 text-center">
-              <div className="text-base font-bold" style={{ color: d.c }}>{d.v}%</div>
-              <div className="text-[10px] text-white/40">{d.label}</div>
+            <div key={d.label} className="flex-1 text-center bg-navy-800/60 p-1.5 sm:p-2 rounded-lg">
+              <div className="text-sm sm:text-base font-bold" style={{ color: d.c }}>{d.v}%</div>
+              <div className="text-[9px] sm:text-[10px] text-white/50">{d.label}</div>
             </div>
           ))}
         </div>
@@ -148,8 +148,8 @@ const capabilities = [
       "Agents receive real-time suggested responses, next-best actions, knowledge recommendations, and conversation summaries — reducing handle time and improving resolution quality.",
     features: ["Response suggestions", "Next-best action", "KB search", "Conversation summary"],
     preview: (
-      <div className="bg-navy-900 rounded-xl p-4 border border-white/10 space-y-3">
-        <div className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-2">
+      <div className="bg-navy-900 rounded-xl p-3 sm:p-4 border border-white/10 space-y-2 sm:space-y-3">
+        <div className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-1">
           AI Assist Panel
         </div>
         {[
@@ -159,13 +159,13 @@ const capabilities = [
         ].map((item) => (
           <div
             key={item.type}
-            className="p-3 rounded-lg border"
+            className="p-2.5 sm:p-3 rounded-lg border"
             style={{ background: `${item.color}10`, borderColor: `${item.color}30` }}
           >
-            <div className="text-[10px] font-semibold mb-1" style={{ color: item.color }}>
+            <div className="text-[10px] font-semibold mb-0.5" style={{ color: item.color }}>
               {item.type}
             </div>
-            <div className="text-xs text-white/70 leading-snug">{item.text}</div>
+            <div className="text-[11px] sm:text-xs text-white/70 leading-snug">{item.text}</div>
           </div>
         ))}
       </div>
@@ -184,20 +184,20 @@ const capabilities = [
       "Automatically evaluate interactions against quality frameworks. Score calls, flag compliance issues, identify coaching opportunities, and track quality trends across teams.",
     features: ["Auto scoring", "Compliance alerts", "Call audit trails", "Coach opportunities"],
     preview: (
-      <div className="bg-navy-900 rounded-xl p-4 border border-white/10">
-        <div className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-3">
+      <div className="bg-navy-900 rounded-xl p-3 sm:p-4 border border-white/10">
+        <div className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-2 sm:mb-3">
           QA Scorecard
         </div>
         {[
-          { label: "Greeting & Compliance", score: 92, max: 100 },
-          { label: "Empathy & Tone", score: 88, max: 100 },
-          { label: "Problem Resolution", score: 95, max: 100 },
-          { label: "Closure Protocol", score: 79, max: 100 },
+          { label: "Greeting & Compliance", score: 92 },
+          { label: "Empathy & Tone", score: 88 },
+          { label: "Problem Resolution", score: 95 },
+          { label: "Closure Protocol", score: 79 },
         ].map((item) => (
-          <div key={item.label} className="mb-3">
-            <div className="flex justify-between text-xs mb-1">
+          <div key={item.label} className="mb-2 sm:mb-3 last:mb-0">
+            <div className="flex justify-between text-[11px] sm:text-xs mb-1">
               <span className="text-white/60">{item.label}</span>
-              <span className="font-semibold text-white/80">{item.score}</span>
+              <span className="font-semibold text-white/90">{item.score}%</span>
             </div>
             <div className="h-1.5 bg-white/10 rounded-full">
               <div
@@ -223,16 +223,16 @@ const capabilities = [
       "Agents see the complete customer picture — CRM data, interaction history, channel preferences, open cases, and sentiment trends — without switching between systems.",
     features: ["Unified profile", "Interaction history", "Channel timeline", "Case visibility"],
     preview: (
-      <div className="bg-navy-900 rounded-xl p-4 border border-white/10">
-        <div className="flex items-center gap-3 mb-4 pb-3 border-b border-white/10">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-accent/60 to-accent-dark flex items-center justify-center text-white font-bold">
+      <div className="bg-navy-900 rounded-xl p-3 sm:p-4 border border-white/10">
+        <div className="flex items-center gap-2.5 sm:gap-3 mb-3.5 pb-2.5 border-b border-white/10">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-accent/60 to-accent-dark flex items-center justify-center text-white font-bold flex-shrink-0 text-sm">
             S
           </div>
-          <div>
-            <div className="text-sm font-semibold text-white">Sanjay Mehta</div>
-            <div className="text-xs text-white/40">Premium · Since Jan 2022</div>
+          <div className="min-w-0 flex-1">
+            <div className="text-xs sm:text-sm font-semibold text-white truncate">Sanjay Mehta</div>
+            <div className="text-[10px] text-white/40 truncate">Premium · Since Jan 2022</div>
           </div>
-          <div className="ml-auto px-2 py-1 rounded text-[10px] font-semibold bg-green-400/20 text-green-400">
+          <div className="px-2 py-0.5 rounded text-[9px] sm:text-[10px] font-semibold bg-green-400/20 text-green-400">
             Positive
           </div>
         </div>
@@ -242,9 +242,9 @@ const capabilities = [
             { label: "Open Cases", value: "1" },
             { label: "CSAT", value: "4.8" },
           ].map((s) => (
-            <div key={s.label} className="bg-navy-800 rounded-lg p-2">
-              <div className="text-base font-bold text-white">{s.value}</div>
-              <div className="text-[10px] text-white/40">{s.label}</div>
+            <div key={s.label} className="bg-navy-800/80 rounded-lg p-2">
+              <div className="text-sm sm:text-base font-bold text-white">{s.value}</div>
+              <div className="text-[9px] sm:text-[10px] text-white/40">{s.label}</div>
             </div>
           ))}
         </div>
@@ -261,9 +261,9 @@ export default function PlatformOverview() {
     <section id="platform" className="section-padding bg-white" aria-label="Platform capabilities overview">
       <div className="container-wide">
         <RevealOnScroll>
-          <div className="max-w-2xl mb-16">
+          <div className="max-w-2xl mb-8 sm:mb-12 lg:mb-16 text-center sm:text-left">
             <SectionLabel>Platform</SectionLabel>
-            <h2 className="heading-section text-navy-900 mb-4">
+            <h2 className="heading-section text-navy-900 mb-3 sm:mb-4">
               One Platform. Every Customer Interaction.
             </h2>
             <p className="body-large">
@@ -273,12 +273,32 @@ export default function PlatformOverview() {
           </div>
         </RevealOnScroll>
 
-        <div className="grid lg:grid-cols-5 gap-8 items-start">
-          {/* Capability list */}
-          <div className="lg:col-span-2 space-y-2">
-            {capabilities.map((cap, i) => (
+        {/* Mobile / Tablet Horizontal Scroll Tab Bar (<lg) */}
+        <div className="lg:hidden flex gap-2 overflow-x-auto no-scrollbar pb-3 mb-6 snap-x">
+          {capabilities.map((item, i) => (
+            <button
+              key={item.id}
+              onClick={() => setActive(i)}
+              className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl border text-xs font-semibold whitespace-nowrap transition-all duration-200 flex-shrink-0 snap-start ${
+                active === i
+                  ? "bg-navy-900 border-navy-700 text-white shadow-sm"
+                  : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100"
+              }`}
+            >
+              <span className={`w-6 h-6 rounded-md flex items-center justify-center text-xs ${active === i ? "bg-accent text-white" : "bg-white text-slate-600"}`}>
+                {item.icon}
+              </span>
+              <span>{item.label}</span>
+            </button>
+          ))}
+        </div>
+
+        <div className="grid lg:grid-cols-5 gap-6 lg:gap-8 items-start">
+          {/* Desktop Capability list (>=lg) */}
+          <div className="hidden lg:block lg:col-span-2 space-y-2">
+            {capabilities.map((item, i) => (
               <button
-                key={cap.id}
+                key={item.id}
                 onClick={() => setActive(i)}
                 className={`w-full text-left flex items-start gap-4 p-4 rounded-xl border transition-all duration-200 ${
                   active === i
@@ -291,7 +311,7 @@ export default function PlatformOverview() {
                     active === i ? "bg-accent text-white" : "bg-slate-100 text-slate-500"
                   }`}
                 >
-                  {cap.icon}
+                  {item.icon}
                 </div>
                 <div className="min-w-0">
                   <div
@@ -299,14 +319,14 @@ export default function PlatformOverview() {
                       active === i ? "text-white" : "text-slate-700"
                     }`}
                   >
-                    {cap.label}
+                    {item.label}
                   </div>
                   <div
                     className={`text-xs leading-snug ${
                       active === i ? "text-white/60" : "text-slate-400"
                     }`}
                   >
-                    {cap.headline}
+                    {item.headline}
                   </div>
                 </div>
               </button>
@@ -314,24 +334,24 @@ export default function PlatformOverview() {
           </div>
 
           {/* Detail panel */}
-          <div className="lg:col-span-3">
-            <div className="bg-slate-50 rounded-2xl border border-slate-200 p-6 lg:p-8 h-full">
-              <div className="mb-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
+          <div className="lg:col-span-3 w-full">
+            <div className="bg-slate-50 rounded-2xl border border-slate-200 p-4 sm:p-6 lg:p-8 h-full">
+              <div className="mb-5 sm:mb-6">
+                <div className="flex items-center gap-2.5 sm:gap-3 mb-3">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent flex-shrink-0">
                     {cap.icon}
                   </div>
-                  <span className="text-xs font-semibold uppercase tracking-widest text-accent">
+                  <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-widest text-accent">
                     {cap.label}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold text-navy-900 mb-3">{cap.headline}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-5">{cap.description}</p>
-                <div className="flex flex-wrap gap-2">
+                <h3 className="text-lg sm:text-xl font-bold text-navy-900 mb-2 sm:mb-3">{cap.headline}</h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">{cap.description}</p>
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {cap.features.map((f) => (
                     <span
                       key={f}
-                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-medium text-slate-600"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white border border-slate-200 text-[11px] sm:text-xs font-medium text-slate-700"
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
                       {f}

@@ -30,12 +30,12 @@ export default function Button({
   rel,
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center font-semibold tracking-tight transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-xl select-none cursor-pointer";
+    "inline-flex items-center justify-center font-semibold tracking-tight transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-xl select-none cursor-pointer max-w-full text-center";
 
   const sizes = {
-    sm: "text-xs sm:text-sm px-4 py-2 gap-1.5",
-    md: "text-sm px-6 py-3 gap-2",
-    lg: "text-base px-8 py-3.5 gap-2.5",
+    sm: "text-xs px-3.5 py-2 gap-1.5",
+    md: "text-xs sm:text-sm px-5 py-2.5 sm:py-3 gap-2",
+    lg: "text-sm sm:text-base px-6 py-3 sm:py-3.5 gap-2.5",
   };
 
   const variants = {

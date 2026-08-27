@@ -97,31 +97,31 @@ export default function TechDifferentiators() {
     <section id="tech" className="section-padding bg-slate-50" aria-label="Technology differentiators">
       <div className="container-wide">
         <RevealOnScroll>
-          <div className="max-w-2xl mb-16">
+          <div className="max-w-2xl mb-8 sm:mb-12 lg:mb-16 text-center sm:text-left">
             <SectionLabel>Technology</SectionLabel>
-            <h2 className="heading-section text-navy-900 mb-4">
+            <h2 className="heading-section text-navy-900 mb-3 sm:mb-4">
               AI-Native Customer Experience Infrastructure
             </h2>
             <p className="body-large">
-              Eight differentiating capabilities built into the Aethrion CX platform — not bolted
+              Eight differentiating capabilities built natively into the Aethrion CX platform — not bolted
               on as afterthoughts.
             </p>
           </div>
         </RevealOnScroll>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {differentiators.map((d, i) => (
             <RevealOnScroll key={d.label} delay={i * 50}>
-              <div className="group bg-white rounded-xl border border-slate-200 p-6 hover:border-accent/40 hover:shadow-card-hover transition-all duration-300 h-full flex flex-col">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-navy-900 flex items-center justify-center text-accent flex-shrink-0">
+              <div className="group bg-white rounded-xl border border-slate-200 p-4 sm:p-6 hover:border-accent/40 hover:shadow-card-hover transition-all duration-300 h-full flex flex-col">
+                <div className="flex items-start justify-between mb-3 sm:mb-4">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-navy-900 flex items-center justify-center text-accent flex-shrink-0">
                     {d.icon}
                   </div>
                   <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20">
                     {d.badge}
                   </span>
                 </div>
-                <h3 className="text-sm font-bold text-navy-900 mb-2 leading-snug">{d.label}</h3>
+                <h3 className="text-xs sm:text-sm font-bold text-navy-900 mb-1.5 leading-snug">{d.label}</h3>
                 <p className="text-xs text-slate-500 leading-relaxed flex-1">{d.description}</p>
               </div>
             </RevealOnScroll>

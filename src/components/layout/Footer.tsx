@@ -41,13 +41,13 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-navy-950 text-white" id="about">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="py-16 grid grid-cols-1 lg:grid-cols-3 gap-12 border-b border-white/10">
+    <footer className="bg-navy-950 text-white border-t border-white/5" id="about">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="py-10 sm:py-16 grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12 border-b border-white/10">
 
           {/* Brand column */}
           <div>
-            <div className="flex items-center gap-2.5 mb-5">
+            <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
               <div className="w-8 h-8 flex-shrink-0">
                 <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                   <rect width="32" height="32" rx="8" fill="#0ea5e9" />
@@ -63,7 +63,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <p className="text-sm text-white/60 leading-relaxed max-w-xs mb-6">
+            <p className="text-xs sm:text-sm text-white/60 leading-relaxed max-w-xs mb-5 sm:mb-6">
               An AI-powered Customer Experience Platform that unifies every customer interaction,
               channel, and intelligence into one workspace.
             </p>
@@ -84,15 +84,15 @@ export default function Footer() {
 
           {/* Section links — one per section in page order */}
           <div className="lg:col-span-2">
-            <h3 className="text-xs font-semibold tracking-widest uppercase text-white/40 mb-5">
+            <h3 className="text-[11px] sm:text-xs font-semibold tracking-widest uppercase text-white/40 mb-4 sm:mb-5">
               On This Page
             </h3>
-            <ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-3">
+            <ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 sm:gap-x-8 gap-y-2.5 sm:gap-y-3">
               {sectionLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-sm text-white/60 hover:text-white transition-colors duration-150"
+                    className="text-xs sm:text-sm text-white/60 hover:text-white transition-colors duration-150 block py-0.5"
                   >
                     {link.label}
                   </a>
@@ -103,13 +103,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-white/40">
+        <div className="py-5 sm:py-6 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-center sm:text-left">
+          <p className="text-[11px] sm:text-xs text-white/40">
             © {new Date().getFullYear()} AthenaServ Infotech. All rights reserved.
           </p>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 sm:gap-6">
             {legalLinks.map((l) => (
-              <a key={l.label} href={l.href} className="text-xs text-white/40 hover:text-white/70 transition-colors">
+              <a key={l.label} href={l.href} className="text-[11px] sm:text-xs text-white/40 hover:text-white/70 transition-colors">
                 {l.label}
               </a>
             ))}

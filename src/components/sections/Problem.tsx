@@ -51,10 +51,10 @@ function ChannelDiagram() {
   const cy = 130;
 
   return (
-    <div className="flex items-center justify-center py-8">
+    <div className="flex items-center justify-center py-4 sm:py-8">
       <svg
         viewBox="0 0 260 260"
-        className="w-48 h-48 lg:w-60 lg:h-60"
+        className="w-40 h-40 sm:w-48 sm:h-48 lg:w-60 lg:h-60 select-none"
         role="img"
         aria-label="Multiple channels converging into one unified platform"
       >
@@ -80,10 +80,10 @@ function ChannelDiagram() {
 
         {/* Center platform node */}
         <circle cx={cx} cy={cy} r="28" fill="#0d1630" stroke="#0ea5e9" strokeWidth="2" />
-        <text x={cx} y={cy - 5} textAnchor="middle" fill="#0ea5e9" fontSize="8" fontWeight="600">
+        <text x={cx} y={cy - 5} textAnchor="middle" fill="#0ea5e9" fontSize="8" fontWeight="700">
           Aethrion
         </text>
-        <text x={cx} y={cy + 7} textAnchor="middle" fill="#0ea5e9" fontSize="8" fontWeight="600">
+        <text x={cx} y={cy + 7} textAnchor="middle" fill="#0ea5e9" fontSize="8" fontWeight="700">
           CX
         </text>
 
@@ -111,9 +111,9 @@ export default function Problem() {
     <section id="problem" className="section-padding bg-slate-50" aria-label="Customer experience challenges">
       <div className="container-wide">
         <RevealOnScroll>
-          <div className="max-w-2xl mb-16">
-            <SectionLabel>The Problem</SectionLabel>
-            <h2 className="heading-section text-navy-900 mb-4">
+          <div className="max-w-2xl mb-8 sm:mb-12 lg:mb-16 text-center sm:text-left">
+            <SectionLabel>The Challenge</SectionLabel>
+            <h2 className="heading-section text-navy-900 mb-3 sm:mb-4">
               Customer Experience Shouldn&apos;t Be Fragmented.
             </h2>
             <p className="body-large">
@@ -123,18 +123,18 @@ export default function Problem() {
           </div>
         </RevealOnScroll>
 
-        <div className="grid lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-16">
           {problems.map((p, i) => (
             <RevealOnScroll key={p.label} delay={i * 100}>
-              <div className="bg-white rounded-2xl border border-slate-200 p-8 hover:border-slate-300 hover:shadow-card-hover transition-all duration-300 h-full">
-                <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 mb-5">
+              <div className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-7 hover:border-slate-300 hover:shadow-card-hover transition-all duration-300 h-full">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 mb-4 sm:mb-5">
                   {p.icon}
                 </div>
-                <div className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2">
+                <div className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1.5 sm:mb-2">
                   {p.label}
                 </div>
-                <h3 className="text-lg font-bold text-navy-900 mb-3">{p.headline}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{p.description}</p>
+                <h3 className="text-base sm:text-lg font-bold text-navy-900 mb-2 sm:mb-3 leading-snug">{p.headline}</h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{p.description}</p>
               </div>
             </RevealOnScroll>
           ))}
@@ -142,14 +142,14 @@ export default function Problem() {
 
         {/* Convergence visual + closing statement */}
         <RevealOnScroll>
-          <div className="bg-navy-900 rounded-2xl p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-10">
+          <div className="bg-navy-900 rounded-2xl p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-6 sm:gap-10 shadow-xl border border-white/5">
             <ChannelDiagram />
             <div className="flex-1 text-center lg:text-left">
-              <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4 leading-tight">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4 leading-tight">
                 Aethrion CX brings the entire customer experience operation into one intelligent
                 workspace.
               </h3>
-              <p className="text-white/60 leading-relaxed">
+              <p className="text-xs sm:text-sm lg:text-base text-white/70 leading-relaxed">
                 Every channel. Every interaction. Every agent. One unified platform with AI at its
                 core — so your team can focus on resolution, not navigation.
               </p>
