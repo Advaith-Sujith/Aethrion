@@ -16,6 +16,13 @@ export const metadata: Metadata = {
   keywords:
     "AI customer experience platform, customer experience platform, AI contact center, omnichannel contact center, AI customer service, customer experience automation, conversational AI, AI agent assist, sentiment analytics, customer 360, enterprise customer experience",
   authors: [{ name: "AthenaServ Infotech" }],
+  icons: {
+    icon: [
+      { url: "/logo.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/logo.svg",
+  },
   openGraph: {
     title: "Aethrion CX — AI-Powered Customer Experience Platform",
     description:
@@ -45,7 +52,8 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+        <link rel="alternate icon" href="/favicon.ico" />
       </head>
       <body className="antialiased">{children}</body>
     </html>

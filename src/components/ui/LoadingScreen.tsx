@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import BrandLogo from "@/components/ui/BrandLogo";
 
 export default function LoadingScreen() {
   const [loading, setLoading] = useState(true);
@@ -30,20 +31,10 @@ export default function LoadingScreen() {
 
       <div className="relative flex flex-col items-center text-center p-6 max-w-sm">
         {/* Animated Brand Logo */}
-        <div className="relative w-16 h-16 mb-5">
+        <div className="relative w-18 h-18 mb-5">
           <div className="absolute inset-0 rounded-2xl bg-accent/20 blur-md animate-ping opacity-40" />
-          <div className="relative w-16 h-16 rounded-2xl bg-navy-900 border border-white/20 p-3 shadow-2xl flex items-center justify-center">
-            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-              <rect width="32" height="32" rx="6" fill="#0ea5e9" />
-              <path
-                d="M8 22L14 10L20 18L24 14"
-                stroke="white"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <circle cx="24" cy="14" r="2.5" fill="white" />
-            </svg>
+          <div className="relative w-18 h-18 rounded-2xl bg-navy-900/90 border border-white/20 p-3 shadow-2xl flex items-center justify-center backdrop-blur-md">
+            <BrandLogo className="w-full h-full object-contain filter drop-shadow-md" />
           </div>
         </div>
 

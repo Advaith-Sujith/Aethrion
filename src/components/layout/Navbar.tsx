@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Button from "@/components/ui/Button";
+import BrandLogo from "@/components/ui/BrandLogo";
 import { openContactModal } from "@/components/ui/ContactModal";
 
 // Nav links in the exact chronological order sections appear on the page
@@ -65,21 +66,11 @@ export default function Navbar() {
             {/* Brand Logo */}
             <a
               href="/"
-              className="flex items-center gap-2 sm:gap-2.5 group select-none min-w-0"
+              className="flex items-center gap-2.5 sm:gap-3 group select-none min-w-0"
               aria-label="Aethrion CX — Home"
             >
-              <div className="w-8 h-8 relative flex-shrink-0">
-                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                  <rect width="32" height="32" rx="8" fill="#0ea5e9" />
-                  <path
-                    d="M8 22L14 10L20 18L24 14"
-                    stroke="white"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <circle cx="24" cy="14" r="2" fill="white" />
-                </svg>
+              <div className="w-8 h-8 relative flex-shrink-0 flex items-center justify-center">
+                <BrandLogo className="w-full h-full object-contain filter drop-shadow-sm group-hover:scale-105 transition-transform duration-200" />
               </div>
               <div className="flex flex-col leading-none min-w-0">
                 <span className="text-sm sm:text-base font-bold tracking-tight text-white group-hover:text-accent transition-colors truncate">

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 682 1024" fill="none">
+  <!-- Back half of orbiting ring (behind top cone) -->
+  <path d="M 43 502 A 298.5 38.5 0 0 1 640 502 L 605 502 A 264 27 0 0 0 77 502 Z" fill="#001b5a" />
+  
+  <!-- Diamond Body -->
+  <!-- Top-Left (Vibrant Electric Blue) -->
+  <polygon points="341,77 142,495 341,495" fill="#004dfc" />
+  <!-- Top-Right (Deep Navy) -->
+  <polygon points="341,77 341,495 540,495" fill="#001b5a" />
+  <!-- Bottom-Left (Vibrant Electric Blue) -->
+  <polygon points="142,495 341,891 341,495" fill="#004dfc" />
+  <!-- Bottom-Right (Deep Navy) -->
+  <polygon points="341,495 341,891 540,495" fill="#001b5a" />
+  
+  <!-- Front half of orbiting ring (in front of bottom cone) -->
+  <path d="M 43 502 A 298.5 38.5 0 0 0 640 502 L 605 502 A 264 27 0 0 1 77 502 Z" fill="#001b5a" />
+</svg>

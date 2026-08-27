@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 682 1024" width="682" height="1024">
+  <defs>
+    <!-- Crisp colors -->
+    <!-- Left face blue -->
+  </defs>
+  
+  <!-- Back ring arc -->
+  <path d="M 43,502 A 298.5 32 0 0 1 640,502 L 581,502 A 239.5 24 0 0 0 102,502 Z" fill="#001b5a" />
+  
+  <!-- Diamond Top-Left Face -->
+  <polygon points="341,77 142,495 341,495" fill="#004dfc" />
+  
+  <!-- Diamond Top-Right Face -->
+  <polygon points="341,77 341,495 540,495" fill="#001b5a" />
+  
+  <!-- Diamond Bottom-Left Face -->
+  <polygon points="142,495 341,891 341,495" fill="#004dfc" />
+  
+  <!-- Diamond Bottom-Right Face -->
+  <polygon points="341,495 341,891 540,495" fill="#001b5a" />
+  
+  <!-- Front ring arc -->
+  <path d="M 43,502 A 298.5 32 0 0 0 640,502 L 581,502 A 239.5 24 0 0 1 102,502 Z" fill="#001b5a" />
+</svg>

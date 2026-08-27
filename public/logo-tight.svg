@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="35 65 612 836" fill="none">
+  <!-- Back half of orbiting ring -->
+  <path d="M 43 502 A 298.5 38.5 0 0 1 640 502 L 605 502 A 264 27 0 0 0 77 502 Z" fill="#001b5a" />
+  
+  <!-- Diamond Body -->
+  <polygon points="341,77 142,495 341,495" fill="#004dfc" />
+  <polygon points="341,77 341,495 540,495" fill="#001b5a" />
+  <polygon points="142,495 341,891 341,495" fill="#004dfc" />
+  <polygon points="341,495 341,891 540,495" fill="#001b5a" />
+  
+  <!-- Front half of orbiting ring -->
+  <path d="M 43 502 A 298.5 38.5 0 0 0 640 502 L 605 502 A 264 27 0 0 1 77 502 Z" fill="#001b5a" />
+</svg>
