@@ -7,8 +7,9 @@ import { openContactModal } from "@/components/ui/ContactModal";
 const channels = [
   { label: "Voice", color: "#0ea5e9", icon: "📞" },
   { label: "Chat", color: "#22c55e", icon: "💬" },
-  { label: "Email", color: "#8b5cf6", icon: "✉️" },
   { label: "WhatsApp", color: "#25d366", icon: "📱" },
+  { label: "Email", color: "#8b5cf6", icon: "✉️" },
+  { label: "SMS", color: "#06b6d4", icon: "📨" },
   { label: "Social", color: "#f59e0b", icon: "🌐" },
 ];
 
@@ -62,7 +63,7 @@ function DashboardMockup() {
             <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
           </div>
           <span className="text-[10px] sm:text-xs text-white/50 font-medium truncate px-2">
-            Aethrion CX — Workspace
+            Aethrion CX — CCaaS &amp; Agent Hub
           </span>
           <LiveIndicator />
         </div>
@@ -113,16 +114,16 @@ function DashboardMockup() {
               </div>
             ))}
 
-            <div className="pt-3 border-t border-white/10 mt-3">
+            <div className="pt-2.5 border-t border-white/10 mt-2.5">
               <div className="text-[10px] font-semibold uppercase tracking-widest text-white/30 px-2 py-1 mb-1">
                 Queue Status
               </div>
               {[
-                { count: 8, label: "Waiting", color: "text-yellow-400" },
-                { count: 14, label: "Active", color: "text-green-400" },
+                { count: 8, label: "IVR / Bot", color: "text-accent" },
+                { count: 14, label: "Live Agents", color: "text-green-400" },
                 { count: 3, label: "Escalated", color: "text-red-400" },
               ].map((item) => (
-                <div key={item.label} className="flex items-center justify-between px-2 py-1">
+                <div key={item.label} className="flex items-center justify-between px-2 py-0.5">
                   <span className="text-[11px] text-white/50">{item.label}</span>
                   <span className={`text-xs font-bold ${item.color}`}>{item.count}</span>
                 </div>
@@ -141,7 +142,7 @@ function DashboardMockup() {
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="text-xs sm:text-sm font-semibold text-white truncate">Rajesh Kumar</div>
-                  <div className="text-[10px] text-white/40 truncate">REF-2847 · Premium Member</div>
+                  <div className="text-[10px] text-white/40 truncate">REF-2847 · Customer 360 Lead</div>
                 </div>
                 <div className="flex items-center gap-1.5 flex-shrink-0">
                   <div
@@ -178,7 +179,7 @@ function DashboardMockup() {
                     <p className="text-[11px] sm:text-xs text-white/90 leading-relaxed">
                       I can see your application REF-2847. Verification is complete. Estimated disbursement is 2 business days.
                     </p>
-                    <span className="text-[8px] sm:text-[9px] text-accent/70 mt-0.5 block">Agent · 10:43 AM</span>
+                    <span className="text-[8px] sm:text-[9px] text-accent/70 mt-0.5 block">Agent Assist · 10:43 AM</span>
                   </div>
                 </div>
               </div>
@@ -193,9 +194,9 @@ function DashboardMockup() {
                   </svg>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-[9px] sm:text-[10px] font-semibold text-accent mb-0.5">AI Suggestion</div>
+                  <div className="text-[9px] sm:text-[10px] font-semibold text-accent mb-0.5">GenAI Assist &amp; Next-Best Action</div>
                   <p className="text-[10px] sm:text-[11px] text-white/70 leading-snug truncate sm:whitespace-normal">
-                    Offer proactive SMS/WhatsApp notification enrollment for milestone updates.
+                    Enroll customer in automated WhatsApp status notifications &amp; dispatch loan statement.
                   </p>
                 </div>
               </div>
@@ -216,7 +217,7 @@ function DashboardMockup() {
         </div>
       </div>
 
-      {/* Floating analytics card (safely positioned within container bounds) */}
+      {/* Floating analytics card */}
       <div className="absolute right-2 top-6 hidden 2xl:block bg-white rounded-xl shadow-card-hover border border-slate-200 p-3.5 w-40 animate-fadeIn pointer-events-none">
         <div className="flex items-center justify-between mb-2">
           <span className="text-[11px] font-semibold text-slate-500">CSAT Trend</span>
@@ -285,7 +286,7 @@ export default function Hero() {
             <div className="inline-flex items-center gap-1.5 sm:gap-2 mb-3 sm:mb-5 px-3 py-1.5 rounded-full border border-accent/30 bg-accent/10 max-w-full">
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse flex-shrink-0" />
               <span className="text-[10px] sm:text-xs font-semibold tracking-normal sm:tracking-wide text-accent truncate">
-                AI-Powered Customer Experience Platform
+                AI-Powered Customer Experience &amp; CCaaS Platform
               </span>
             </div>
 
@@ -296,15 +297,34 @@ export default function Hero() {
               Into a Resolution.
             </h1>
 
-            {/* Supporting copy */}
-            <p className="text-xs sm:text-base lg:text-lg text-white/70 leading-relaxed mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0 break-words">
-              Aethrion CX is an AI-powered customer experience platform that unifies voice, chat,
-              email, WhatsApp, social channels, automation, analytics, and customer intelligence in
-              one workspace.
+            {/* Supporting copy — explicitly communicates CCaaS + Omnichannel + AI + Customer 360 + Automation + Analytics */}
+            <p className="text-xs sm:text-base lg:text-lg text-white/70 leading-relaxed mb-4 sm:mb-6 max-w-xl mx-auto lg:mx-0 break-words">
+              Aethrion CX combines <strong className="text-white font-semibold">CCaaS</strong>, omnichannel engagement, conversational <strong className="text-white font-semibold">AI</strong>, <strong className="text-white font-semibold">Customer 360</strong> intelligence, workflow <strong className="text-white font-semibold">automation</strong>, and real-time <strong className="text-white font-semibold">analytics</strong> into one unified enterprise workspace.
             </p>
 
+            {/* Subtle Capability Strip */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-2 gap-y-1 text-[11px] sm:text-xs text-white/50 mb-6 sm:mb-8 font-medium">
+              <span>Voice</span>
+              <span className="text-white/20">·</span>
+              <span>Chat</span>
+              <span className="text-white/20">·</span>
+              <span>WhatsApp</span>
+              <span className="text-white/20">·</span>
+              <span>Email</span>
+              <span className="text-white/20">·</span>
+              <span>SMS</span>
+              <span className="text-white/20">·</span>
+              <span>Social</span>
+              <span className="text-white/20">·</span>
+              <span className="text-accent">AI</span>
+              <span className="text-white/20">·</span>
+              <span>Analytics</span>
+              <span className="text-white/20">·</span>
+              <span>Customer 360</span>
+            </div>
+
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center sm:items-stretch lg:items-center justify-center lg:justify-start gap-2.5 sm:gap-3 mb-8 sm:mb-12 w-full max-w-md mx-auto lg:mx-0">
+            <div className="flex flex-col sm:flex-row items-center sm:items-stretch lg:items-center justify-center lg:justify-start gap-2.5 sm:gap-3 mb-8 sm:mb-10 w-full max-w-md mx-auto lg:mx-0">
               <Button
                 variant="primary"
                 size="md"

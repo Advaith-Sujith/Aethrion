@@ -11,7 +11,7 @@ const problems = [
     label: "Fragmented Channels",
     headline: "Context Lost Between Systems",
     description:
-      "Agents switch between phone, chat, email, WhatsApp, and multiple internal systems. Customer context gets lost between handoffs, forcing customers to repeat themselves.",
+      "Agents switch between phone, chat, email, WhatsApp, SMS, social, and disconnected CRM tools. Customer context gets lost between handoffs, forcing customers to repeat themselves.",
   },
   {
     icon: (
@@ -20,9 +20,9 @@ const problems = [
       </svg>
     ),
     label: "Zero Visibility",
-    headline: "Managers Flying Blind",
+    headline: "Supervisors Flying Blind",
     description:
-      "Managers lack real-time insight into agent activity, customer sentiment, and operational performance. Issues are discovered after the fact, not prevented in real time.",
+      "Managers lack real-time insight into agent performance, sentiment dips, QA scores, and SLA breaches. Issues are discovered after customer churn, not prevented in real time.",
   },
   {
     icon: (
@@ -33,17 +33,18 @@ const problems = [
     label: "High Handle Time",
     headline: "Agents Searching, Not Resolving",
     description:
-      "Without AI assistance, agents spend disproportionate time searching knowledge bases, switching systems, and handling repetitive queries that could be automated.",
+      "Without AI assistance and integrated Customer 360, agents spend excessive time searching knowledge bases, manually summarizing calls, and handling repetitive tier-1 inquiries.",
   },
 ];
 
 function ChannelDiagram() {
   const channelNodes = [
     { label: "Voice", angle: 270, color: "#0ea5e9" },
-    { label: "Chat", angle: 342, color: "#22c55e" },
-    { label: "Email", angle: 54, color: "#8b5cf6" },
-    { label: "WhatsApp", angle: 126, color: "#25d366" },
-    { label: "Social", angle: 198, color: "#f59e0b" },
+    { label: "Chat", angle: 330, color: "#22c55e" },
+    { label: "WhatsApp", angle: 30, color: "#25d366" },
+    { label: "Email", angle: 90, color: "#8b5cf6" },
+    { label: "SMS", angle: 150, color: "#06b6d4" },
+    { label: "Social", angle: 210, color: "#f59e0b" },
   ];
 
   const r = 90;
@@ -95,7 +96,7 @@ function ChannelDiagram() {
           return (
             <g key={node.label}>
               <circle cx={x} cy={y} r="18" fill={`${node.color}20`} stroke={node.color} strokeWidth="1.5" />
-              <text x={x} y={y + 4} textAnchor="middle" fill={node.color} fontSize="7.5" fontWeight="600">
+              <text x={x} y={y + 4} textAnchor="middle" fill={node.color} fontSize="7" fontWeight="600">
                 {node.label}
               </text>
             </g>
@@ -108,33 +109,33 @@ function ChannelDiagram() {
 
 export default function Problem() {
   return (
-    <section id="problem" className="section-padding bg-slate-50" aria-label="Customer experience challenges">
-      <div className="container-wide">
+    <section id="problem" className="section-padding bg-slate-50 overflow-hidden w-full" aria-label="Customer experience challenges">
+      <div className="container-wide w-full max-w-full overflow-hidden">
         <RevealOnScroll>
           <div className="max-w-2xl mb-8 sm:mb-12 lg:mb-16 text-center sm:text-left">
             <SectionLabel>The Challenge</SectionLabel>
-            <h2 className="heading-section text-navy-900 mb-3 sm:mb-4">
+            <h2 className="heading-section text-navy-900 mb-3 sm:mb-4 break-words">
               Customer Experience Shouldn&apos;t Be Fragmented.
             </h2>
-            <p className="body-large">
-              Service organizations today operate across too many disconnected tools, channels, and
-              data sources — creating friction for customers and agents alike.
+            <p className="body-large break-words">
+              Service organizations today operate across disconnected tools, isolated channels, and
+              siloed data — creating friction for customers, fatigue for agents, and blind spots for managers.
             </p>
           </div>
         </RevealOnScroll>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-16 w-full min-w-0">
           {problems.map((p, i) => (
             <RevealOnScroll key={p.label} delay={i * 100}>
-              <div className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-7 hover:border-slate-300 hover:shadow-card-hover transition-all duration-300 h-full">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 mb-4 sm:mb-5">
+              <div className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-7 hover:border-slate-300 hover:shadow-card-hover transition-all duration-300 h-full min-w-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 mb-4 sm:mb-5 flex-shrink-0">
                   {p.icon}
                 </div>
                 <div className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1.5 sm:mb-2">
                   {p.label}
                 </div>
-                <h3 className="text-base sm:text-lg font-bold text-navy-900 mb-2 sm:mb-3 leading-snug">{p.headline}</h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{p.description}</p>
+                <h3 className="text-base sm:text-lg font-bold text-navy-900 mb-2 sm:mb-3 leading-snug break-words">{p.headline}</h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed break-words">{p.description}</p>
               </div>
             </RevealOnScroll>
           ))}
@@ -142,16 +143,14 @@ export default function Problem() {
 
         {/* Convergence visual + closing statement */}
         <RevealOnScroll>
-          <div className="bg-navy-900 rounded-2xl p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-6 sm:gap-10 shadow-xl border border-white/5">
+          <div className="bg-navy-900 rounded-2xl p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-6 sm:gap-10 shadow-xl border border-white/5 w-full min-w-0">
             <ChannelDiagram />
-            <div className="flex-1 text-center lg:text-left">
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4 leading-tight">
-                Aethrion CX brings the entire customer experience operation into one intelligent
-                workspace.
+            <div className="flex-1 text-center lg:text-left min-w-0">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4 leading-tight break-words">
+                Aethrion CX brings the entire customer experience operation into one intelligent workspace.
               </h3>
-              <p className="text-xs sm:text-sm lg:text-base text-white/70 leading-relaxed">
-                Every channel. Every interaction. Every agent. One unified platform with AI at its
-                core — so your team can focus on resolution, not navigation.
+              <p className="text-xs sm:text-sm lg:text-base text-white/70 leading-relaxed break-words">
+                Every channel. Every interaction. Every agent. One unified platform with AI, CCaaS, Customer 360, and automated QA at its core — so your team can focus on resolution, not navigation.
               </p>
             </div>
           </div>

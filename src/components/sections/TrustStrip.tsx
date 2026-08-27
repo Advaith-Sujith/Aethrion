@@ -7,7 +7,7 @@ const metrics = [
     suffix: "",
     display: "8",
     label: "Integrated Modules",
-    sub: "Unified CX operating system",
+    sub: "CCaaS, AI, CRM & Analytics",
   },
   {
     value: 70,
@@ -15,7 +15,7 @@ const metrics = [
     suffix: "+",
     display: "70+",
     label: "Languages Supported",
-    sub: "Including 12 Indian languages",
+    sub: "Voice bots & 12 Indian dialects",
   },
   {
     value: 85,
@@ -23,15 +23,15 @@ const metrics = [
     suffix: "%",
     display: "85%",
     label: "Sentiment Accuracy",
-    sub: "Across voice and text",
+    sub: "Acoustic & linguistic analysis",
   },
   {
     value: 24,
     prefix: "",
     suffix: "/7",
     display: "24/7",
-    label: "Continuous Monitoring",
-    sub: "Always-on intelligence",
+    label: "Continuous Operations",
+    sub: "Automated QA & SLA management",
   },
 ];
 

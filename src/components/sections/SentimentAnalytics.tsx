@@ -12,9 +12,9 @@ const mechanisms = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
       </svg>
     ),
-    label: "Textual Cue Detection",
+    label: "Textual & Linguistic Cues",
     description:
-      "Analyze phrasing, linguistic cadence, and emotional intent within live text chats, emails, and WhatsApp messages.",
+      "Analyze phrasing, tone nuances, frustration signals, and conversational sentiment in live chats, emails, and WhatsApp threads.",
   },
   {
     icon: (
@@ -22,9 +22,9 @@ const mechanisms = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
       </svg>
     ),
-    label: "Voice Tone Analysis",
+    label: "Acoustic Voice Stress Analysis",
     description:
-      "Detect pitch variances, speaking pace, customer hesitation, and acoustic stress indicators in live voice calls.",
+      "Detect pitch shifts, speech velocity, pauses, customer agitation, and acoustic stress patterns in real-time voice calls.",
   },
   {
     icon: (
@@ -34,7 +34,7 @@ const mechanisms = [
     ),
     label: "Contextual Understanding",
     description:
-      "Interpret sentiment across the entire conversational lifecycle rather than isolating single messages out of context.",
+      "Interpret emotional trajectory across the entire conversational lifecycle rather than isolating single phrases out of context.",
   },
   {
     icon: (
@@ -42,9 +42,9 @@ const mechanisms = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802" />
       </svg>
     ),
-    label: "Multilingual Analysis",
+    label: "Multilingual Analysis (70+ Langs)",
     description:
-      "Process customer interactions across 70+ languages — including 12 native Indian languages — with consistent accuracy.",
+      "Analyze customer sentiment across 70+ global languages — including 12 native Indian languages — with consistent 85% accuracy.",
   },
 ];
 
@@ -98,7 +98,7 @@ function SentimentChart() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
             </span>
-            <span className="text-xs text-green-400 font-medium truncate">Acoustic &amp; Linguistic Feed</span>
+            <span className="text-xs text-green-400 font-medium truncate">Acoustic &amp; Linguistic Live Feed</span>
           </div>
         </div>
         <div className="flex items-center sm:flex-col sm:items-end justify-between sm:justify-start flex-shrink-0">
@@ -178,10 +178,10 @@ function SentimentChart() {
           <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-2.5 sm:p-3 min-w-0">
             <div className="flex items-center gap-1.5 mb-0.5">
               <span className="text-red-400 text-xs">⚠</span>
-              <span className="text-[10px] font-bold text-red-400 truncate">Escalation Safeguard</span>
+              <span className="text-[10px] font-bold text-red-400 truncate">Escalation Safeguard Active</span>
             </div>
             <p className="text-[10px] text-white/70 leading-snug break-words">
-              Call #4821 — Tone stress detected. Automated supervisor whisper active.
+              Call #4821 — Tone stress detected. Automated supervisor whisper enabled.
             </p>
           </div>
 
@@ -214,16 +214,14 @@ export default function SentimentAnalytics() {
                 Know What Your Customers Are Feeling — In Real Time.
               </h2>
               <p className="body-large mb-6 sm:mb-8 break-words">
-                Aethrion CX analyzes customer emotion and tone across voice and text to help teams
-                identify escalation risks, coach agents effectively, and improve customer experience
-                outcomes.
+                Aethrion CX analyzes customer emotion and acoustic tone across voice and text streams to help teams identify escalation risks, coach agents effectively, and safeguard customer relationships.
               </p>
 
               {/* Metrics Grid */}
-              <div className="grid grid-cols-2 gap-2.5 sm:gap-4 mb-6 sm:mb-10 w-full min-w-0">
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-4 mb-6 sm:mb-8 w-full min-w-0">
                 {[
-                  { value: 70, suffix: "+", label: "Languages", sub: "70+ Global Languages" },
-                  { value: 85, suffix: "%", label: "Accuracy", sub: "Sentiment Engine" },
+                  { value: 70, suffix: "+", label: "Languages", sub: "Global & 12 Indic Dialects" },
+                  { value: 85, suffix: "%", label: "Accuracy", sub: "Acoustic & Text Models" },
                 ].map((m) => (
                   <div key={m.label} className="bg-slate-50 rounded-xl border border-slate-200 p-3 sm:p-4 min-w-0">
                     <div className="text-xl sm:text-2xl lg:text-3xl font-black text-navy-900 mb-0.5">
@@ -234,11 +232,11 @@ export default function SentimentAnalytics() {
                   </div>
                 ))}
                 {[
-                  { value: "12", label: "Indian Languages", sub: "Native Indic Dialects" },
-                  { value: "24/7", label: "Monitoring", sub: "Continuous Analysis" },
+                  { value: "Voice + Text", label: "Multi-Modal AI", sub: "Acoustics & Cues" },
+                  { value: "24/7", label: "Continuous Monitoring", sub: "Always-on Intelligence" },
                 ].map((m) => (
                   <div key={m.label} className="bg-slate-50 rounded-xl border border-slate-200 p-3 sm:p-4 min-w-0">
-                    <div className="text-xl sm:text-2xl lg:text-3xl font-black text-navy-900 mb-0.5">{m.value}</div>
+                    <div className="text-base sm:text-xl lg:text-2xl font-black text-navy-900 mb-0.5 leading-tight">{m.value}</div>
                     <div className="text-xs sm:text-sm font-bold text-slate-800 truncate">{m.label}</div>
                     <div className="text-[10px] sm:text-xs text-slate-400 truncate">{m.sub}</div>
                   </div>
@@ -246,7 +244,7 @@ export default function SentimentAnalytics() {
               </div>
 
               {/* Mechanisms */}
-              <div className="space-y-3 sm:space-y-4 w-full min-w-0">
+              <div className="space-y-3 sm:space-y-3.5 w-full min-w-0 mb-6 sm:mb-8">
                 {mechanisms.map((m) => (
                   <div key={m.label} className="flex gap-2.5 sm:gap-4 items-start min-w-0">
                     <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-accent/10 flex items-center justify-center text-accent flex-shrink-0 mt-0.5">
@@ -258,6 +256,34 @@ export default function SentimentAnalytics() {
                     </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Visual Operational Value Loop Callout */}
+              <div className="p-3.5 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 w-full min-w-0">
+                <div className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-2 text-center sm:text-left">
+                  Practical Business Value Loop
+                </div>
+                <div className="flex flex-wrap items-center justify-between gap-1.5 text-xs">
+                  <div className="flex items-center gap-1.5 font-semibold text-navy-900 bg-white px-2.5 py-1 rounded-lg border border-slate-200 shadow-2xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                    <span>Sentiment</span>
+                  </div>
+                  <span className="text-slate-400 font-bold text-xs">→</span>
+                  <div className="flex items-center gap-1.5 font-semibold text-red-600 bg-red-50 px-2.5 py-1 rounded-lg border border-red-200 shadow-2xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                    <span>Escalation Signal</span>
+                  </div>
+                  <span className="text-slate-400 font-bold text-xs">→</span>
+                  <div className="flex items-center gap-1.5 font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200 shadow-2xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                    <span>Agent Assist</span>
+                  </div>
+                  <span className="text-slate-400 font-bold text-xs">→</span>
+                  <div className="flex items-center gap-1.5 font-semibold text-violet-700 bg-violet-50 px-2.5 py-1 rounded-lg border border-violet-200 shadow-2xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-violet-500" />
+                    <span>Manager Insight</span>
+                  </div>
+                </div>
               </div>
             </div>
           </RevealOnScroll>

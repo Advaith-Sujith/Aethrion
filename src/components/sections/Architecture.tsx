@@ -2,21 +2,21 @@ import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import SectionLabel from "@/components/ui/SectionLabel";
 
 const channels = [
-  { label: "Voice", icon: "📞", color: "#0ea5e9", angle: 270 },
-  { label: "Chat", icon: "💬", color: "#22c55e", angle: 330 },
+  { label: "Voice / IVR", icon: "📞", color: "#0ea5e9", angle: 270 },
+  { label: "Web Chat", icon: "💬", color: "#22c55e", angle: 330 },
   { label: "WhatsApp", icon: "📱", color: "#25d366", angle: 30 },
   { label: "Email", icon: "✉️", color: "#8b5cf6", angle: 90 },
-  { label: "Social", icon: "🌐", color: "#f59e0b", angle: 150 },
-  { label: "CRM", icon: "🗃️", color: "#ec4899", angle: 210 },
+  { label: "SMS", icon: "📨", color: "#06b6d4", angle: 150 },
+  { label: "Social", icon: "🌐", color: "#f59e0b", angle: 210 },
 ];
 
 const enterprise = [
-  { label: "Helpdesk", icon: "🎫", color: "#06b6d4", angle: 270 },
-  { label: "Analytics", icon: "📊", color: "#10b981", angle: 330 },
-  { label: "Backend", icon: "⚙️", color: "#94a3b8", angle: 30 },
-  { label: "Workflow", icon: "🔄", color: "#f59e0b", angle: 90 },
-  { label: "Reporting", icon: "📈", color: "#22c55e", angle: 150 },
-  { label: "AI Engine", icon: "🤖", color: "#8b5cf6", angle: 210 },
+  { label: "CRM 360", icon: "🗃️", color: "#ec4899", angle: 270 },
+  { label: "Helpdesk", icon: "🎫", color: "#06b6d4", angle: 330 },
+  { label: "QA & Audio", icon: "🎙️", color: "#10b981", angle: 30 },
+  { label: "Workflows", icon: "🔄", color: "#f59e0b", angle: 90 },
+  { label: "Analytics", icon: "📊", color: "#22c55e", angle: 150 },
+  { label: "GenAI Core", icon: "🤖", color: "#8b5cf6", angle: 210 },
 ];
 
 function ArchDiagram() {
@@ -89,7 +89,7 @@ function ArchDiagram() {
         Platform Core
       </text>
       <text x={cx} y={cy + 18} textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="7">
-        AI · Omnichannel · Analytics
+        CCaaS · AI · Customer 360
       </text>
 
       {/* Channel nodes (inner ring) */}
@@ -100,8 +100,8 @@ function ArchDiagram() {
         return (
           <g key={ch.label}>
             <circle cx={x} cy={y} r="22" fill={`${ch.color}18`} stroke={ch.color} strokeWidth="1.5" />
-            <text x={x} y={y - 3} textAnchor="middle" fontSize="11">{ch.icon}</text>
-            <text x={x} y={y + 11} textAnchor="middle" fill={ch.color} fontSize="6.5" fontWeight="700">
+            <text x={x} y={y - 3} textAnchor="middle" fontSize="10">{ch.icon}</text>
+            <text x={x} y={y + 11} textAnchor="middle" fill={ch.color} fontSize="6" fontWeight="700">
               {ch.label}
             </text>
           </g>
@@ -129,7 +129,7 @@ function ArchDiagram() {
         CHANNEL LAYER
       </text>
       <text x={cx - r2 + 30} y={cy - r2 - 12} textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="7" fontWeight="700">
-        ENTERPRISE INTEGRATIONS
+        ENTERPRISE &amp; AI LAYER
       </text>
     </svg>
   );
@@ -137,26 +137,25 @@ function ArchDiagram() {
 
 export default function Architecture() {
   return (
-    <section id="architecture" className="section-padding bg-slate-50" aria-label="Platform architecture and integrations">
-      <div className="container-wide">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+    <section id="architecture" className="section-padding bg-slate-50 overflow-hidden w-full" aria-label="Platform architecture and integrations">
+      <div className="container-wide w-full max-w-full overflow-hidden">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full min-w-0">
           <RevealOnScroll direction="left">
-            <div>
+            <div className="min-w-0">
               <SectionLabel>Architecture</SectionLabel>
-              <h2 className="heading-section text-navy-900 mb-3 sm:mb-4">
+              <h2 className="heading-section text-navy-900 mb-3 sm:mb-4 break-words">
                 Connect Customer Experience to Your Enterprise Stack.
               </h2>
-              <p className="body-large mb-6 sm:mb-8">
+              <p className="body-large mb-6 sm:mb-8 break-words">
                 Aethrion CX sits at the center of your customer experience ecosystem — connecting
-                inbound channels, customer-facing AI, and enterprise backend systems into one
-                coordinated platform.
+                inbound channels, conversational AI, Customer 360 context, and enterprise backend systems into one coordinated platform.
               </p>
 
-              <div className="space-y-5 sm:space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 <div>
                   <h4 className="text-xs sm:text-sm font-bold text-navy-900 mb-2 sm:mb-3 flex items-center gap-2">
-                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-lg bg-accent/10 flex items-center justify-center text-accent text-[11px] sm:text-xs font-bold">1</span>
-                    Channel Ingestion Layer
+                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-lg bg-accent/10 flex items-center justify-center text-accent text-[11px] sm:text-xs font-bold flex-shrink-0">1</span>
+                    <span>Channel Ingestion Layer</span>
                   </h4>
                   <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {channels.map((ch) => (
@@ -173,8 +172,8 @@ export default function Architecture() {
 
                 <div>
                   <h4 className="text-xs sm:text-sm font-bold text-navy-900 mb-2 sm:mb-3 flex items-center gap-2">
-                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-lg bg-accent/10 flex items-center justify-center text-accent text-[11px] sm:text-xs font-bold">2</span>
-                    Enterprise Integration Layer
+                    <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-lg bg-accent/10 flex items-center justify-center text-accent text-[11px] sm:text-xs font-bold flex-shrink-0">2</span>
+                    <span>Enterprise &amp; AI Integration Layer</span>
                   </h4>
                   <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {enterprise.map((e) => (
@@ -189,18 +188,17 @@ export default function Architecture() {
                 </div>
               </div>
 
-              <div className="mt-6 sm:mt-8 p-4 sm:p-5 bg-navy-900 rounded-xl border border-white/5">
-                <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
-                  Aethrion CX uses a standard API and webhook integration model. Connect to your
-                  existing CRM, helpdesk, and backend systems without replacing your current
-                  infrastructure.
+              <div className="mt-6 sm:mt-8 p-4 sm:p-5 bg-navy-900 rounded-xl border border-white/5 min-w-0">
+                <p className="text-xs sm:text-sm text-white/70 leading-relaxed break-words">
+                  Aethrion CX uses standard REST API and webhook integration models. Connect to your
+                  existing CRM, helpdesk, payment gateways, and core banking systems without replacing your current infrastructure.
                 </p>
               </div>
             </div>
           </RevealOnScroll>
 
           <RevealOnScroll direction="right" delay={100}>
-            <div className="bg-navy-950 rounded-2xl p-4 sm:p-6 lg:p-8 border border-white/10 shadow-xl">
+            <div className="bg-navy-950 rounded-2xl p-4 sm:p-6 lg:p-8 border border-white/10 shadow-xl w-full min-w-0">
               <ArchDiagram />
             </div>
           </RevealOnScroll>

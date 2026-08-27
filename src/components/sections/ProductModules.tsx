@@ -7,69 +7,69 @@ import SectionLabel from "@/components/ui/SectionLabel";
 const modules = [
   {
     id: "call-center",
-    label: "Call Center Platform",
-    shortLabel: "Call Center",
+    label: "Contact Center (CCaaS)",
+    shortLabel: "CCaaS",
     icon: "📞",
     color: "#0ea5e9",
     angle: 270,
     description:
-      "Full inbound and outbound contact center capabilities with ACD, IVR, voice recording, skill-based routing, and real-time supervisor controls.",
-    capabilities: ["ACD & Smart IVR", "Call Recording & Archival", "Skill-Based Agent Routing", "Real-Time Supervision", "Automated Outbound Campaigns"],
+      "Full inbound and outbound contact center capabilities with Smart IVR, intelligent ACD, automated outbound dialer campaigns, voice recording, and real-time supervisor controls.",
+    capabilities: ["Smart IVR & Intelligent ACD", "Outbound Dialer & Campaigns", "Voice Recording & Archival", "Skill-Based Agent Routing", "Real-Time Supervisor Controls"],
   },
   {
     id: "crm",
-    label: "Customer CRM",
-    shortLabel: "CRM",
+    label: "Customer CRM / 360",
+    shortLabel: "CRM 360",
     icon: "🗃️",
     color: "#8b5cf6",
     angle: 315,
     description:
-      "Built-in CRM for managing complete customer profiles, omnichannel interaction history, account milestones, and relationship lifecycle data.",
-    capabilities: ["Unified Customer Profiles", "Cross-Channel History", "Lifecycle Stage Tracking", "Relationship Insights", "Enterprise CRM Connectors"],
+      "Built-in CRM for managing unified customer profiles, omnichannel interaction timelines, relationship lifecycle stages, account holdings, and enterprise CRM connectors.",
+    capabilities: ["Unified Customer 360 View", "Cross-Channel Timeline", "Lifecycle Stage Tracking", "Enterprise CRM Connectors", "Account Holdings Context"],
   },
   {
     id: "support",
-    label: "Support Platform",
-    shortLabel: "Support",
+    label: "Helpdesk & Support",
+    shortLabel: "Helpdesk",
     icon: "🎫",
     color: "#22c55e",
     angle: 0,
     description:
-      "Enterprise ticketing and case resolution with strict SLA monitoring, intelligent auto-assignment, multi-tiered escalation, and audit logging.",
-    capabilities: ["Multi-Channel Ticketing", "SLA Adherence Engines", "Automated Assignment", "Dynamic Escalation Triggers", "Priority Service Queues"],
+      "Enterprise multi-channel ticketing and case resolution with strict SLA management, intelligent auto-assignment, dynamic escalation triggers, and complete audit logging.",
+    capabilities: ["Multi-Channel Ticketing", "Strict SLA Adherence Engines", "Automated Case Assignment", "Dynamic Escalation Triggers", "Quality Audit Trails"],
   },
   {
     id: "digital-assistants",
-    label: "Digital Assistants",
+    label: "Digital AI Assistants",
     shortLabel: "AI Bots",
     icon: "🤖",
     color: "#f59e0b",
     angle: 45,
     description:
-      "Conversational voice and chat bots supporting 70+ languages — resolving routine inquiries, validating caller intent, and enabling context-rich handoffs.",
-    capabilities: ["Voice Bots (IVR & Outbound)", "Digital Chatbots", "70+ Languages & 12 Indian", "Intent & Entity Extraction", "Zero-Loss Context Handoff"],
+      "Conversational voice and chat bots supporting 70+ languages — including 12 native Indian languages — resolving routine queries, validating intent, and enabling context-rich handoffs.",
+    capabilities: ["Conversational Voice Bots", "Multilingual Chatbots (70+ Langs)", "12 Native Indian Languages", "Intent & Entity Extraction", "Zero-Loss Context Handoff"],
   },
   {
     id: "omnichannel",
-    label: "Omnichannel Layer",
-    shortLabel: "Channels",
+    label: "Omnichannel Orchestration",
+    shortLabel: "Omnichannel",
     icon: "🌐",
     color: "#ef4444",
     angle: 90,
     description:
-      "Single orchestration layer unifying voice, chat, email, WhatsApp, SMS, and social media interactions into one synchronized queue.",
-    capabilities: ["Synchronized Universal Queue", "Voice & Digital Unified", "WhatsApp & Social Integration", "Session Persistence", "Cross-Channel Routing"],
+      "Single universal queue unifying Voice, Chat, WhatsApp, Email, SMS, Web Chat, and Social media interactions into one synchronized stream with session persistence.",
+    capabilities: ["Synchronized Universal Queue", "Voice, Chat & WhatsApp", "SMS & Social Ingestion", "Cross-Channel Session Persistence", "Dynamic Channel Routing"],
   },
   {
     id: "agent-hub",
-    label: "Agent Hub",
+    label: "Agent Hub & GenAI Assist",
     shortLabel: "Agent Hub",
     icon: "🧑‍💼",
     color: "#06b6d4",
     angle: 135,
     description:
-      "Unified single-pane workspace combining conversation streams, customer 360 data, GenAI assist recommendations, and knowledge repositories.",
-    capabilities: ["Single Pane of Glass", "GenAI Response Suggestions", "Instant Knowledge Retrieval", "Customer 360 Live Feed", "Automated Call Wrap-up"],
+      "Unified single-pane workspace combining conversation streams, Customer 360 data, GenAI suggested responses, instant knowledge retrieval, and automated call wrap-up summaries.",
+    capabilities: ["Single-Pane Agent Desktop", "GenAI Response Suggestions", "Next-Best Action Prompts", "Instant Knowledge Search", "Automated Call Wrap-up"],
   },
   {
     id: "analytics",
@@ -79,19 +79,19 @@ const modules = [
     color: "#10b981",
     angle: 180,
     description:
-      "Live operational dashboards, historical trends, predictive CSAT modeling, and AI-driven workforce optimization metrics.",
-    capabilities: ["Real-Time Operations Dashboards", "Historical Reporting Suites", "Predictive CSAT Scoring", "Agent Quality Scoring", "Workforce Utilization Insights"],
+      "Live operational dashboards, historical reporting suites, predictive CSAT modeling, automated QA scoring, and workforce utilization optimization metrics.",
+    capabilities: ["Real-Time Operations Dashboards", "Predictive CSAT Scoring", "Workforce Optimization", "Automated QA Scorecards", "Custom Business KPI Reports"],
   },
   {
     id: "sentiment",
-    label: "Sentiment Engine",
+    label: "Sentiment Engine & Social Listening",
     shortLabel: "Sentiment",
     icon: "❤️",
     color: "#f43f5e",
     angle: 225,
     description:
-      "Real-time acoustic and linguistic sentiment intelligence across voice and text with 85% accuracy and automated supervisor alerts.",
-    capabilities: ["Real-Time Emotion Detection", "Voice Acoustic & Tone Analysis", "85% Validated Accuracy", "70+ Languages Supported", "Live Escalation Alerts"],
+      "Real-time acoustic and linguistic sentiment intelligence across voice and text with 85% accuracy, brand social listening, stress indicators, and automated supervisor alerts.",
+    capabilities: ["Real-Time Emotion Waveform", "Acoustic Voice Stress Analysis", "AI Social Listening & Brand Monitor", "85% Validated Accuracy", "Live Escalation Alerts"],
   },
 ];
 
@@ -115,8 +115,7 @@ export default function ProductModules() {
               <span className="text-accent">One CX Operating System.</span>
             </h2>
             <p className="body-large text-white/60 break-words">
-              Every module is natively built to share customer context, intelligence, and workflows
-              without siloed data or expensive custom middleware.
+              Every module is natively built into Aethrion CX — sharing customer context, intelligence, and workflows across CCaaS, AI bots, Customer 360, QA, and analytics.
             </p>
           </div>
         </RevealOnScroll>
@@ -255,7 +254,7 @@ export default function ProductModules() {
                       className="text-[11px] sm:text-xs font-semibold block truncate"
                       style={{ color: active.color }}
                     >
-                      Module {modules.findIndex((m) => m.id === active.id) + 1} of 8 · Integrated Core
+                      Module {modules.findIndex((m) => m.id === active.id) + 1} of 8 · Integrated Architecture
                     </span>
                   </div>
                 </div>
@@ -266,7 +265,7 @@ export default function ProductModules() {
 
                 <div className="space-y-2">
                   <div className="text-[10px] font-semibold uppercase tracking-widest text-white/40 mb-1.5">
-                    Key Capabilities
+                    Core Capabilities &amp; Features
                   </div>
                   {active.capabilities.map((cap) => (
                     <div key={cap} className="flex items-center gap-2 p-2 rounded-lg bg-navy-950/40 border border-white/5 min-w-0">
