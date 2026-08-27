@@ -86,22 +86,22 @@ function SentimentChart() {
     currentSentiment >= 65 ? "#22c55e" : currentSentiment >= 45 ? "#f59e0b" : "#ef4444";
 
   return (
-    <div className="bg-navy-900 rounded-2xl border border-white/10 p-4 sm:p-6 overflow-hidden shadow-2xl">
+    <div className="bg-navy-900 rounded-2xl border border-white/10 p-4 sm:p-6 overflow-hidden shadow-2xl w-full min-w-0">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 sm:mb-5 pb-3 border-b border-white/10">
-        <div>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 sm:mb-5 pb-3 border-b border-white/10 min-w-0">
+        <div className="min-w-0">
           <div className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-white/30 mb-1">
             Real-Time Emotion Engine
           </div>
           <div className="flex items-center gap-2">
-            <span className="relative flex h-2 w-2">
+            <span className="relative flex h-2 w-2 flex-shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
             </span>
-            <span className="text-xs text-green-400 font-medium">Acoustic &amp; Linguistic Feed</span>
+            <span className="text-xs text-green-400 font-medium truncate">Acoustic &amp; Linguistic Feed</span>
           </div>
         </div>
-        <div className="flex items-center sm:flex-col sm:items-end justify-between sm:justify-start">
+        <div className="flex items-center sm:flex-col sm:items-end justify-between sm:justify-start flex-shrink-0">
           <div
             className="text-2xl sm:text-3xl font-black transition-all duration-700 leading-none"
             style={{ color: sentimentColor }}
@@ -113,7 +113,7 @@ function SentimentChart() {
       </div>
 
       {/* Waveform / timeline */}
-      <div className="mb-4 sm:mb-5 bg-navy-950/40 p-2 rounded-xl border border-white/5">
+      <div className="mb-4 sm:mb-5 bg-navy-950/40 p-2 rounded-xl border border-white/5 w-full min-w-0 overflow-hidden">
         <svg
           viewBox={`0 0 ${w} ${h}`}
           className="w-full h-20 sm:h-28"
@@ -148,8 +148,8 @@ function SentimentChart() {
       </div>
 
       {/* Sentiment breakdown + escalation alert */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-        <div className="bg-navy-950/40 p-3 rounded-xl border border-white/5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full min-w-0">
+        <div className="bg-navy-950/40 p-3 rounded-xl border border-white/5 min-w-0">
           <div className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-2">
             Distribution
           </div>
@@ -158,40 +158,40 @@ function SentimentChart() {
             { label: "Neutral", value: 23, color: "#f59e0b" },
             { label: "Negative", value: 15, color: "#ef4444" },
           ].map((d) => (
-            <div key={d.label} className="flex items-center gap-2 mb-1.5 last:mb-0">
-              <div className="flex-1 h-1.5 bg-white/10 rounded-full">
+            <div key={d.label} className="flex items-center gap-2 mb-1.5 last:mb-0 min-w-0">
+              <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
                 <div
                   className="h-full rounded-full transition-all duration-700"
                   style={{ width: `${d.value}%`, background: d.color }}
                 />
               </div>
-              <span className="text-[10px] font-bold w-7 text-right" style={{ color: d.color }}>
+              <span className="text-[10px] font-bold w-7 text-right flex-shrink-0" style={{ color: d.color }}>
                 {d.value}%
               </span>
-              <span className="text-[10px] text-white/50 w-12">{d.label}</span>
+              <span className="text-[10px] text-white/50 w-12 flex-shrink-0 truncate">{d.label}</span>
             </div>
           ))}
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2 min-w-0">
           {/* Escalation alert */}
-          <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-2.5 sm:p-3">
+          <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-2.5 sm:p-3 min-w-0">
             <div className="flex items-center gap-1.5 mb-0.5">
               <span className="text-red-400 text-xs">⚠</span>
-              <span className="text-[10px] font-bold text-red-400">Escalation Safeguard</span>
+              <span className="text-[10px] font-bold text-red-400 truncate">Escalation Safeguard</span>
             </div>
-            <p className="text-[10px] text-white/70 leading-snug">
+            <p className="text-[10px] text-white/70 leading-snug break-words">
               Call #4821 — Tone stress detected. Automated supervisor whisper active.
             </p>
           </div>
 
           {/* Coach suggestion */}
-          <div className="bg-accent/10 border border-accent/30 rounded-xl p-2.5 sm:p-3">
+          <div className="bg-accent/10 border border-accent/30 rounded-xl p-2.5 sm:p-3 min-w-0">
             <div className="flex items-center gap-1.5 mb-0.5">
               <span className="text-accent text-xs">💡</span>
-              <span className="text-[10px] font-bold text-accent">Coaching Prompt</span>
+              <span className="text-[10px] font-bold text-accent truncate">Coaching Prompt</span>
             </div>
-            <p className="text-[10px] text-white/70 leading-snug">
+            <p className="text-[10px] text-white/70 leading-snug break-words">
               Acknowledge wait time. Provide instant resolution commitment.
             </p>
           </div>
@@ -203,58 +203,58 @@ function SentimentChart() {
 
 export default function SentimentAnalytics() {
   return (
-    <section id="sentiment" className="section-padding bg-white" aria-label="Sentiment analytics capabilities">
-      <div className="container-wide">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+    <section id="sentiment" className="section-padding bg-white overflow-hidden w-full" aria-label="Sentiment analytics capabilities">
+      <div className="container-wide w-full max-w-full overflow-hidden">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full min-w-0">
           {/* Text content */}
           <RevealOnScroll direction="left">
-            <div>
+            <div className="min-w-0">
               <SectionLabel>Sentiment Intelligence</SectionLabel>
-              <h2 className="heading-section text-navy-900 mb-3 sm:mb-4">
+              <h2 className="heading-section text-navy-900 mb-3 sm:mb-4 break-words">
                 Know What Your Customers Are Feeling — In Real Time.
               </h2>
-              <p className="body-large mb-6 sm:mb-8">
+              <p className="body-large mb-6 sm:mb-8 break-words">
                 Aethrion CX analyzes customer emotion and tone across voice and text to help teams
                 identify escalation risks, coach agents effectively, and improve customer experience
                 outcomes.
               </p>
 
               {/* Metrics Grid */}
-              <div className="grid grid-cols-2 gap-2.5 sm:gap-4 mb-6 sm:mb-10">
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-4 mb-6 sm:mb-10 w-full min-w-0">
                 {[
                   { value: 70, suffix: "+", label: "Languages", sub: "70+ Global Languages" },
                   { value: 85, suffix: "%", label: "Accuracy", sub: "Sentiment Engine" },
                 ].map((m) => (
-                  <div key={m.label} className="bg-slate-50 rounded-xl border border-slate-200 p-3 sm:p-4">
+                  <div key={m.label} className="bg-slate-50 rounded-xl border border-slate-200 p-3 sm:p-4 min-w-0">
                     <div className="text-xl sm:text-2xl lg:text-3xl font-black text-navy-900 mb-0.5">
                       <AnimatedCounter target={m.value} suffix={m.suffix} />
                     </div>
-                    <div className="text-xs sm:text-sm font-bold text-slate-800">{m.label}</div>
-                    <div className="text-[10px] sm:text-xs text-slate-400">{m.sub}</div>
+                    <div className="text-xs sm:text-sm font-bold text-slate-800 truncate">{m.label}</div>
+                    <div className="text-[10px] sm:text-xs text-slate-400 truncate">{m.sub}</div>
                   </div>
                 ))}
                 {[
                   { value: "12", label: "Indian Languages", sub: "Native Indic Dialects" },
                   { value: "24/7", label: "Monitoring", sub: "Continuous Analysis" },
                 ].map((m) => (
-                  <div key={m.label} className="bg-slate-50 rounded-xl border border-slate-200 p-3 sm:p-4">
+                  <div key={m.label} className="bg-slate-50 rounded-xl border border-slate-200 p-3 sm:p-4 min-w-0">
                     <div className="text-xl sm:text-2xl lg:text-3xl font-black text-navy-900 mb-0.5">{m.value}</div>
-                    <div className="text-xs sm:text-sm font-bold text-slate-800">{m.label}</div>
-                    <div className="text-[10px] sm:text-xs text-slate-400">{m.sub}</div>
+                    <div className="text-xs sm:text-sm font-bold text-slate-800 truncate">{m.label}</div>
+                    <div className="text-[10px] sm:text-xs text-slate-400 truncate">{m.sub}</div>
                   </div>
                 ))}
               </div>
 
               {/* Mechanisms */}
-              <div className="space-y-3 sm:space-y-4">
+              <div className="space-y-3 sm:space-y-4 w-full min-w-0">
                 {mechanisms.map((m) => (
-                  <div key={m.label} className="flex gap-3 sm:gap-4 items-start">
+                  <div key={m.label} className="flex gap-2.5 sm:gap-4 items-start min-w-0">
                     <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-accent/10 flex items-center justify-center text-accent flex-shrink-0 mt-0.5">
                       {m.icon}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <h4 className="text-xs sm:text-sm font-bold text-navy-900 mb-0.5">{m.label}</h4>
-                      <p className="text-xs text-slate-500 leading-relaxed">{m.description}</p>
+                      <h4 className="text-xs sm:text-sm font-bold text-navy-900 mb-0.5 break-words">{m.label}</h4>
+                      <p className="text-xs text-slate-500 leading-relaxed break-words">{m.description}</p>
                     </div>
                   </div>
                 ))}
@@ -264,7 +264,9 @@ export default function SentimentAnalytics() {
 
           {/* Chart */}
           <RevealOnScroll direction="right" delay={100}>
-            <SentimentChart />
+            <div className="w-full min-w-0">
+              <SentimentChart />
+            </div>
           </RevealOnScroll>
         </div>
       </div>

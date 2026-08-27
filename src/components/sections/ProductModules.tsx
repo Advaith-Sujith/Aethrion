@@ -105,16 +105,16 @@ export default function ProductModules() {
   const active = modules.find((m) => m.id === activeModule) ?? modules[0];
 
   return (
-    <section id="modules" className="section-padding bg-navy-950" aria-label="Aethrion CX product modules">
-      <div className="container-wide">
+    <section id="modules" className="section-padding bg-navy-950 overflow-hidden w-full" aria-label="Aethrion CX product modules">
+      <div className="container-wide w-full max-w-full overflow-hidden">
         <RevealOnScroll>
           <div className="max-w-2xl mb-8 sm:mb-12 lg:mb-16 text-center sm:text-left">
             <SectionLabel light>Platform Architecture</SectionLabel>
-            <h2 className="heading-section text-white mb-3 sm:mb-4">
+            <h2 className="heading-section text-white mb-3 sm:mb-4 break-words">
               Eight Integrated Modules.{" "}
               <span className="text-accent">One CX Operating System.</span>
             </h2>
-            <p className="body-large text-white/60">
+            <p className="body-large text-white/60 break-words">
               Every module is natively built to share customer context, intelligence, and workflows
               without siloed data or expensive custom middleware.
             </p>
@@ -122,7 +122,7 @@ export default function ProductModules() {
         </RevealOnScroll>
 
         {/* Mobile / Tablet Horizontal Module Switcher (<lg) */}
-        <div className="lg:hidden flex gap-2 overflow-x-auto no-scrollbar pb-3 mb-6 snap-x">
+        <div className="lg:hidden flex gap-2 overflow-x-auto no-scrollbar pb-3 mb-6 snap-x w-full max-w-full min-w-0">
           {modules.map((m, i) => {
             const isSel = activeModule === m.id;
             return (
@@ -144,10 +144,10 @@ export default function ProductModules() {
           })}
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full min-w-0">
           {/* Desktop SVG Hub Diagram (>=lg) */}
           <RevealOnScroll direction="left">
-            <div className="hidden lg:flex justify-center">
+            <div className="hidden lg:flex justify-center min-w-0">
               <svg
                 viewBox="0 0 320 320"
                 className="w-full max-w-sm cursor-pointer select-none"
@@ -236,23 +236,23 @@ export default function ProductModules() {
 
           {/* Module Details Card */}
           <RevealOnScroll direction="right">
-            <div className="w-full">
+            <div className="w-full min-w-0">
               <div
                 key={active.id}
-                className="bg-navy-900 border rounded-2xl p-5 sm:p-7 transition-all duration-300 shadow-xl"
+                className="bg-navy-900 border rounded-2xl p-4 sm:p-7 transition-all duration-300 shadow-xl w-full min-w-0 overflow-hidden"
                 style={{ borderColor: `${active.color}40` }}
               >
-                <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5 pb-3 border-b border-white/10">
+                <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5 pb-3 border-b border-white/10 min-w-0">
                   <div
-                    className="w-11 h-11 sm:w-13 sm:h-13 rounded-xl flex items-center justify-center text-xl sm:text-2xl flex-shrink-0"
+                    className="w-10 h-10 sm:w-13 sm:h-13 rounded-xl flex items-center justify-center text-lg sm:text-2xl flex-shrink-0"
                     style={{ background: `${active.color}20`, border: `1px solid ${active.color}40` }}
                   >
                     {active.icon}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h3 className="text-base sm:text-lg font-bold text-white truncate">{active.label}</h3>
+                    <h3 className="text-sm sm:text-lg font-bold text-white break-words">{active.label}</h3>
                     <span
-                      className="text-xs font-semibold"
+                      className="text-[11px] sm:text-xs font-semibold block truncate"
                       style={{ color: active.color }}
                     >
                       Module {modules.findIndex((m) => m.id === active.id) + 1} of 8 · Integrated Core
@@ -260,21 +260,21 @@ export default function ProductModules() {
                   </div>
                 </div>
 
-                <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-5">
+                <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-4 sm:mb-5 break-words">
                   {active.description}
                 </p>
 
                 <div className="space-y-2">
-                  <div className="text-[10px] font-semibold uppercase tracking-widest text-white/40 mb-2">
+                  <div className="text-[10px] font-semibold uppercase tracking-widest text-white/40 mb-1.5">
                     Key Capabilities
                   </div>
                   {active.capabilities.map((cap) => (
-                    <div key={cap} className="flex items-center gap-2.5 p-2 rounded-lg bg-navy-950/40 border border-white/5">
+                    <div key={cap} className="flex items-center gap-2 p-2 rounded-lg bg-navy-950/40 border border-white/5 min-w-0">
                       <span
                         className="w-1.5 h-1.5 rounded-full flex-shrink-0"
                         style={{ background: active.color }}
                       />
-                      <span className="text-xs text-white/80 font-medium">{cap}</span>
+                      <span className="text-[11px] sm:text-xs text-white/80 font-medium break-words">{cap}</span>
                     </div>
                   ))}
                 </div>

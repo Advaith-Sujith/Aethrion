@@ -120,58 +120,74 @@ export default function Industries() {
   const ind = industries.find((i) => i.id === active) ?? industries[0];
 
   return (
-    <section id="industries" className="section-padding bg-slate-50" aria-label="Industries served by Aethrion CX">
-      <div className="container-wide">
+    <section id="industries" className="section-padding bg-slate-50 overflow-hidden w-full" aria-label="Industries served by Aethrion CX">
+      <div className="container-wide w-full max-w-full overflow-hidden">
         <RevealOnScroll>
           <div className="max-w-2xl mb-8 sm:mb-12 lg:mb-16 text-center sm:text-left">
             <SectionLabel>Industries</SectionLabel>
-            <h2 className="heading-section text-navy-900 mb-3 sm:mb-4">
+            <h2 className="heading-section text-navy-900 mb-3 sm:mb-4 break-words">
               Built for High-Volume Customer Interactions
             </h2>
-            <p className="body-large">
+            <p className="body-large break-words">
               Aethrion CX is deployed across industries where customer experience operational
               quality directly impacts business outcomes.
             </p>
           </div>
         </RevealOnScroll>
 
-        <div className="grid lg:grid-cols-4 gap-6 lg:gap-8 items-start">
-          {/* Industry tabs (horizontal scroll on mobile) */}
-          <div className="lg:col-span-1">
-            <div className="flex flex-row lg:flex-col gap-2 overflow-x-auto no-scrollbar pb-3 lg:pb-0 snap-x">
-              {industries.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => setActive(item.id)}
-                  className={`flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl border text-left whitespace-nowrap lg:whitespace-normal transition-all duration-200 flex-shrink-0 snap-start lg:w-full ${
-                    active === item.id
-                      ? "bg-navy-900 border-navy-700 text-white shadow-sm"
-                      : "bg-white border-slate-200 text-slate-700 hover:border-slate-300"
-                  }`}
-                >
-                  <span className="text-base sm:text-lg">{item.icon}</span>
-                  <div className="min-w-0">
-                    <div className={`text-xs sm:text-sm font-bold ${active === item.id ? "text-white" : "text-slate-800"}`}>
-                      {item.label}
-                    </div>
-                    <div className={`text-[10px] hidden lg:block truncate ${active === item.id ? "text-white/50" : "text-slate-400"}`}>
-                      {item.fullLabel}
-                    </div>
+        {/* Mobile / Tablet Horizontal Scroll Tabs (<lg) */}
+        <div className="lg:hidden flex gap-2 overflow-x-auto no-scrollbar pb-3 mb-6 snap-x w-full max-w-full min-w-0">
+          {industries.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => setActive(item.id)}
+              className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl border text-xs font-semibold whitespace-nowrap transition-all duration-200 flex-shrink-0 snap-start ${
+                active === item.id
+                  ? "bg-navy-900 border-navy-700 text-white shadow-sm"
+                  : "bg-white border-slate-200 text-slate-700 hover:border-slate-300"
+              }`}
+            >
+              <span className="text-base">{item.icon}</span>
+              <span>{item.label}</span>
+            </button>
+          ))}
+        </div>
+
+        <div className="grid lg:grid-cols-4 gap-6 lg:gap-8 items-start w-full min-w-0">
+          {/* Desktop Industry tabs (>=lg) */}
+          <div className="hidden lg:flex lg:flex-col gap-2 min-w-0">
+            {industries.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => setActive(item.id)}
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl border text-left transition-all duration-200 w-full ${
+                  active === item.id
+                    ? "bg-navy-900 border-navy-700 text-white shadow-sm"
+                    : "bg-white border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50"
+                }`}
+              >
+                <span className="text-lg flex-shrink-0">{item.icon}</span>
+                <div className="min-w-0 flex-1">
+                  <div className={`text-sm font-bold ${active === item.id ? "text-white" : "text-slate-800"}`}>
+                    {item.label}
                   </div>
-                </button>
-              ))}
-            </div>
+                  <div className={`text-[10px] truncate ${active === item.id ? "text-white/60" : "text-slate-400"}`}>
+                    {item.fullLabel}
+                  </div>
+                </div>
+              </button>
+            ))}
           </div>
 
           {/* Detail panel */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3 w-full min-w-0">
             <div
               key={ind.id}
-              className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-7 lg:p-8 shadow-card"
+              className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-7 lg:p-8 shadow-card w-full min-w-0 overflow-hidden"
             >
-              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-slate-100">
+              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-slate-100 min-w-0">
                 <div
-                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0"
+                  className="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-xl sm:text-3xl flex-shrink-0"
                   style={{ background: `${ind.color}15`, border: `1px solid ${ind.color}30` }}
                 >
                   {ind.icon}
@@ -183,26 +199,26 @@ export default function Industries() {
                   >
                     Industry Focus
                   </div>
-                  <h3 className="text-base sm:text-xl font-bold text-navy-900 truncate sm:whitespace-normal">{ind.fullLabel}</h3>
+                  <h3 className="text-base sm:text-xl font-bold text-navy-900 break-words">{ind.fullLabel}</h3>
                 </div>
               </div>
 
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 sm:mb-8">{ind.description}</p>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 sm:mb-8 break-words">{ind.description}</p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4 w-full min-w-0">
                 {ind.highlights.map((h) => (
                   <div
                     key={h.label}
-                    className="flex gap-2.5 p-3 sm:p-4 rounded-xl"
+                    className="flex gap-2.5 p-3 sm:p-4 rounded-xl min-w-0"
                     style={{ background: `${ind.color}08`, border: `1px solid ${ind.color}18` }}
                   >
                     <span
                       className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0"
                       style={{ background: ind.color }}
                     />
-                    <div>
-                      <div className="text-xs sm:text-sm font-bold text-slate-800 mb-0.5">{h.label}</div>
-                      <div className="text-[11px] sm:text-xs text-slate-500 leading-snug">{h.desc}</div>
+                    <div className="min-w-0 flex-1">
+                      <div className="text-xs sm:text-sm font-bold text-slate-800 mb-0.5 break-words">{h.label}</div>
+                      <div className="text-[11px] sm:text-xs text-slate-500 leading-snug break-words">{h.desc}</div>
                     </div>
                   </div>
                 ))}
